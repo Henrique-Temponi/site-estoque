@@ -13,6 +13,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'as' => 'site.home',
+    function () {
+        return view ('home');
+    }
+]);
+
+Route::get('/login', [
+    'as' => 'site.login',
+    function() {
+        return view ('site.login');
+    }
+]);
+
+Route::post('/login/verificar', [
+    'as' => 'login.verificar',
+    'uses' => 'site\loginController@verificar'
+]);
+
+Route::group(['middleware' => ['auth']], 
+    function() {
+
+        Route::get('/listar', [
+            'as' => 'site.listar',
+            function ()
+            {
+                return view('site.listar');
+            }
+        ]);
+        
+        Route::get('/novo', [
+            'as' => 'site.novo',
+            function ()
+            {
+                return view('site.novo');
+            }
+        ]);
+    }
+);
