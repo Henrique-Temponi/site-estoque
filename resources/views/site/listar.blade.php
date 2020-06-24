@@ -5,7 +5,7 @@
 <div class="row">
     <h3>Voos registrados</h3>
 
-    <table>
+    <table class="highlight responsive-table">
         <thead>
             <tr>
                 <th>Compania</th>
@@ -21,6 +21,11 @@
                     <th>{{ $p->origem }}</th>
                     <th>{{ $p->destino }}</th>
                     <th>{{ $p->horas }}</th>
+                    <th>
+                        <a href="" class="btn">Editar</a>
+                        <a href="" class="btn">Deletar</a>
+                    </th>
+                    <th></th>
                 </tr>
             @endforeach
         </tbody>

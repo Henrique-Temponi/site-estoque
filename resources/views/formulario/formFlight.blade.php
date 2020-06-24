@@ -1,4 +1,4 @@
-<form action="{{ route('site.login') }}" method="POST">
+<form action="{{ route('site.novo') }}" method="POST">
         {{ csrf_field() }}
         <div class="input-field row">
             <label for="compania">Compania: </label>

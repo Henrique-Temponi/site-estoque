@@ -48,6 +48,11 @@ Route::group(['middleware' => ['auth']],
             }
         ]);
 
+        Route::post('/novo', [
+            'as' => 'site.novo',
+            'uses' => 'site\RegistroController@create'
+        ]);
+
         Route::get('/logout', [
             'as' => 'site.logout',
             'uses' => 'site\loginController@logout'
