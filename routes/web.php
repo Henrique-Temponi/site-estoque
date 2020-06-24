@@ -27,8 +27,8 @@ Route::get('/login', [
     }
 ]);
 
-Route::post('/login/verificar', [
-    'as' => 'login.verificar',
+Route::post('/login', [
+    'as' => 'site.login',
     'uses' => 'site\loginController@verificar'
 ]);
 
@@ -49,6 +49,11 @@ Route::group(['middleware' => ['auth']],
             {
                 return view('site.novo');
             }
+        ]);
+
+        Route::get('/logout', [
+            'as' => 'site.logout',
+            'uses' => 'site\loginController@logout'
         ]);
     }
 );

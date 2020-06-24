@@ -9,7 +9,7 @@
         <div class="nav-wrapper blue">
 
             <div class="container">
-                <a href="#!" class="brand-logo">Site</a>
+                <a href="{{ route('site.home') }}" class="brand-logo">Site</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     
@@ -18,6 +18,7 @@
                     @else
                         <li><a href="{{ route('site.novo') }}">Novo</a></li>
                         <li><a href="{{ route('site.listar') }}">Listar</a></li>
+                        <li><a href="{{ route('site.logout') }}">Sair</a></li>
                     @endif
                 </ul>
             </div>
