@@ -20,6 +20,7 @@
                         <li><a href="{{ route('site.listar') }}">Listar</a></li>
                         <li><a href="{{ route('site.logout') }}">Sair</a></li>
                     @endif
+                    
                 </ul>
             </div>
         </div>

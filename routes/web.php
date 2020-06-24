@@ -37,10 +37,7 @@ Route::group(['middleware' => ['auth']],
 
         Route::get('/listar', [
             'as' => 'site.listar',
-            function ()
-            {
-                return view('site.listar');
-            }
+            'uses' => 'site\RegistroController@index'
         ]);
         
         Route::get('/novo', [
