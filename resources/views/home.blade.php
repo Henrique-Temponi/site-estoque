@@ -15,6 +15,7 @@
                     
                     @if (Auth::guest())
                         <li><a href="{{ route('site.login') }}">Entrar</a></li>
+                        <li><a href="{{ route('site.login.novo') }}">Criar Usuario</a></li>
                     @else
                         <li><a href="{{ route('site.novo') }}">Novo</a></li>
                         <li><a href="{{ route('site.listar') }}">Listar</a></li>

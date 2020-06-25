@@ -32,6 +32,18 @@ Route::post('/login', [
     'uses' => 'site\loginController@verificar'
 ]);
 
+Route::get('/login/novo', [
+    'as' => 'site.login.novo',
+    function(){
+        return view('login.novo');
+    }
+]);
+
+Route::post('/login/novo', [
+    'as' => 'site.login.novo',
+    'uses' => 'site\loginController@create'
+]);
+
 Route::group(['middleware' => ['auth']], 
     function() {
 
