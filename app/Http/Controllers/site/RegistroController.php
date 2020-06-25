@@ -54,4 +54,11 @@ class RegistroController extends Controller
 
         return redirect()->action('site\RegistroController@index');
     }
+
+    public function deletar($id)
+    {
+        Flight::find($id)->delete();
+
+        return redirect()->action('site\RegistroController@index');
+    }
 }

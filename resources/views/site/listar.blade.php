@@ -23,7 +23,7 @@
                     <th>{{ $p->horas }}</th>
                     <th>
                         <a href="{{ route('site.editar', $p->id) }}" class="btn">Editar</a>
-                        <a href="" class="btn">Deletar</a>
+                        <a href="{{ route('site.deletar', $p->id) }}" class="btn">Deletar</a>
                     </th>
                     <th></th>
                 </tr>

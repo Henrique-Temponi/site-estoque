@@ -63,6 +63,11 @@ Route::group(['middleware' => ['auth']],
             'uses' => 'site\RegistroController@atualizar'
         ]);
 
+        Route::get('/deletar/{id}', [
+            'as' => 'site.deletar',
+            'uses' => 'site\RegistroController@deletar'
+        ]);
+
         Route::get('/logout', [
             'as' => 'site.logout',
             'uses' => 'site\loginController@logout'
