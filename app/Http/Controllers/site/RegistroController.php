@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RegistroController extends Controller
 {
-    public function index ()
+    public function index()
     {
         $id = Auth::id();
         // dd($id);
@@ -22,14 +22,18 @@ class RegistroController extends Controller
     public function create(Request $request)
     {
         // dd($request);
-        $registro = new Flight();
+        // $registro = new Flight();
+        // $registro->user_id = Auth::id();
+        // $registro->compania = $request['compania'];
+        // $registro->origem = $request['origem'];
+        // $registro->destino = $request['destino'];
+        // $registro->horas = $request['horas'];
+        // $registro->save();
+
+        $registro = new Flight($request->all());
         $registro->user_id = Auth::id();
-        $registro->compania = $request['compania'];
-        $registro->origem = $request['origem'];
-        $registro->destino = $request['destino'];
-        $registro->horas = $request['horas'];
         $registro->save();
 
-        return redirect()->action('RegistroController@index');
+        return redirect()->action('site\RegistroController@index');
     }
 }
