@@ -36,4 +36,22 @@ class RegistroController extends Controller
 
         return redirect()->action('site\RegistroController@index');
     }
+
+    public function editar($id)
+    {
+        $registro = Flight::find($id);
+
+        return view('site.editar')->with('registro', $registro);
+    }
+
+    public function atualizar(Request $request, $id)
+    {
+        // $novoRegistro = new Flight($request->all());
+        // $registro = Flight::find($id);
+
+        $registro = Flight::find($id)->update($request->all());
+        // $registro->save();
+
+        return redirect()->action('site\RegistroController@index');
+    }
 }

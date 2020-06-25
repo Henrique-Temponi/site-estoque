@@ -53,6 +53,16 @@ Route::group(['middleware' => ['auth']],
             'uses' => 'site\RegistroController@create'
         ]);
 
+        Route::get('/editar/{id}', [
+            'as' => 'site.editar',
+            'uses' => 'site\RegistroController@editar'
+        ]);
+
+        Route::post('/editar/{id}', [
+            'as' => 'site.editar',
+            'uses' => 'site\RegistroController@atualizar'
+        ]);
+
         Route::get('/logout', [
             'as' => 'site.logout',
             'uses' => 'site\loginController@logout'
