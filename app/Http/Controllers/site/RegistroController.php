@@ -30,12 +30,34 @@ class RegistroController extends Controller
         // $registro->horas = $request['horas'];
         // $registro->save();
 
-        $registro = new Flight($request->all());
-        $registro->user_id = Auth::id();
-        $registro->save();
+        // dd($request);   
+        
+        
+        if ($request->filled(['compania', 'origem', 'destino', 'horas'])) {
+            
+                // $registro = new Flight($request->except('horas'));
+            $registro = new Flight($request->all());
+            $registro->user_id = Auth::id();
+            $registro->save();
+        
+            // if ()
+        
+            $request->session()->flash('msg', 'voo registrado com sucesso');
+            return redirect()->action('site\RegistroController@index');
+        }
+        
+        
+        $request->session()->flash('msg', 'Erro: dados invalidos');
+        return redirect()->route('site.novo');
+        
+        
+        // $registro = new Flight($request->all());
+        // $registro->user_id = Auth::id();
+        // $registro->save();
+        
+        // $request->session()->flash('msg', 'voo registrado com sucesso');
+        // return redirect()->action('site\RegistroController@index');
 
-        $request->session()->flash('msg', 'voo registrado com sucesso');
-        return redirect()->action('site\RegistroController@index');
     }
 
     public function editar($id)
