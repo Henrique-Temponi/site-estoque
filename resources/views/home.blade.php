@@ -49,13 +49,16 @@
     <ul class="sidenav" id="mobile-demo">
         @if (Auth::guest())
             <li><a href="{{ route('site.login') }}">Entrar</a></li>
+            <li><a href="{{ route('site.login.novo') }}">Criar Usuario</a></li>
         @else
             <li><a href="{{ route('site.novo') }}">Novo</a></li>
             <li><a href="{{ route('site.listar') }}">Listar</a></li>
+            <li><a href="{{ route('site.logout') }}">Sair</a></li>
         @endif
     </ul>
 
         <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
         <script src="{{ asset('js/materialize.min.js') }}"></script>
+        <script src="{{ asset('js/init.js') }}"></script>
     </body>
 </html>
