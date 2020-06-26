@@ -27,6 +27,20 @@
         </div>
     </nav>
 
+    @if(Session::has('msg'))
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m5">
+                <div class="card-panel teal">
+                    <span class="white-text">
+                        {{ Session::get('msg') }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
     <div class="container">
         @yield('conteudo')
     </div>

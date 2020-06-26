@@ -15,15 +15,20 @@ class loginController extends Controller
         $credenciais = $request->only('name', 'password');
         
         if (Auth::attempt($credenciais)) {
+            
+            $request->session()->flash('msg', 'Login feito com sucesso');
             return redirect()->route('site.home');
         }
 
+        
+        $request->session()->flash('msg', 'Erro: verifique os dados');
         return redirect()->route('site.login');
     }
 
     public function logout ()
     {
         Auth::logout();
+        
         return redirect()->route('site.home');
     }
 
@@ -39,9 +44,11 @@ class loginController extends Controller
             $usuario->password = bcrypt($request['password']);
             $usuario->save();
             
+            $request->session()->flash('msg', 'Usuario criado com sucesso');
             return redirect()->route('site.login');
         }
 
+        $request->session()->flash('msg', 'Erro: verifique os dados');
         return redirect()->route('site.login.novo');
     }
 }

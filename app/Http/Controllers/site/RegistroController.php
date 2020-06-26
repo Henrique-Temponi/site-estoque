@@ -34,6 +34,7 @@ class RegistroController extends Controller
         $registro->user_id = Auth::id();
         $registro->save();
 
+        $request->session()->flash('msg', 'voo registrado com sucesso');
         return redirect()->action('site\RegistroController@index');
     }
 
@@ -52,6 +53,7 @@ class RegistroController extends Controller
         $registro = Flight::find($id)->update($request->all());
         // $registro->save();
 
+        $request->session()->flash('msg', 'voo atualizado com sucesso');
         return redirect()->action('site\RegistroController@index');
     }
 
@@ -59,6 +61,8 @@ class RegistroController extends Controller
     {
         Flight::find($id)->delete();
 
-        return redirect()->action('site\RegistroController@index');
+        return redirect()
+            ->action('site\RegistroController@index')
+            ->with('msg', 'Voo deletado');
     }
 }
