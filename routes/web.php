@@ -84,5 +84,10 @@ Route::group(['middleware' => ['auth']],
             'as' => 'site.logout',
             'uses' => 'site\loginController@logout'
         ]);
+
+        Route::get('/listar/pesquisar', [
+            'as' => 'site.listar.pesquisar',
+            'uses' => 'site\RegistroController@pesquisar'
+        ]);
     }
 );

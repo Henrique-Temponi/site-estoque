@@ -87,4 +87,9 @@ class RegistroController extends Controller
             ->action('site\RegistroController@index')
             ->with('msg', 'Voo deletado');
     }
+
+    public function pesquisar(Request $request)
+    {
+        dd($request->input('horas'));
+    }
 }

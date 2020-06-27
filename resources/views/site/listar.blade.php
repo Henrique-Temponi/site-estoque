@@ -4,6 +4,9 @@
 
 <div class="row">
     <h3>Voos registrados</h3>
+    
+    @include('formulario.formFilter')
+    <hr>
 
     <table class="highlight responsive-table">
         <thead>
