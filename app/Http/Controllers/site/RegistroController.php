@@ -90,6 +90,16 @@ class RegistroController extends Controller
 
     public function pesquisar(Request $request)
     {
-        dd($request->input('horas'));
+        // dd($request->input('horas'));
+        // dd($request['horas']);
+
+        $registrosFiltrados = Flight::where([
+            ['horas', '<=', $request->input("horas")],
+            ['user_id', '=', Auth::id()],
+        ])->get();
+
+        // dd($registrosFiltrados);
+
+        return view('site.listar')->with('registros', $registrosFiltrados);
     }
 }
