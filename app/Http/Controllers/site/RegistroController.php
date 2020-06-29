@@ -92,9 +92,15 @@ class RegistroController extends Controller
     {
         // dd($request->input('horas'));
         // dd($request['horas']);
+        // dd($request);
+
+        // $registrosFiltrados = Flight::where([
+        //     ['horas', '<=', $request->input("horas")],
+        //     ['user_id', '=', Auth::id()],
+        // ])->get();
 
         $registrosFiltrados = Flight::where([
-            ['horas', '<=', $request->input("horas")],
+            ['compania', '=', $request->input('compania')],
             ['user_id', '=', Auth::id()],
         ])->get();
 
