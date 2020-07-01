@@ -1,8 +1,8 @@
 <div class="row">
     <form action="{{ action('site\RegistroController@pesquisar') }}">
         <div class="input-field col s3 m3">
-            <label for="compania">Compania: </label>
-            <input type="text" name="compania" id="compania">
+            <label for="companhia">Companhia: </label>
+            <input type="text" name="companhia" id="companhia">
         </div>
         <div class="input-field col s3 m3">
             <label for="origem">origem: </label>

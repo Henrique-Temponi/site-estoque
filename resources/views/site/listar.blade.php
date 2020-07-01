@@ -11,7 +11,7 @@
     <table class="highlight responsive-table">
         <thead>
             <tr>
-                <th>Compania</th>
+                <th>Companhia</th>
                 <th>Origem</th>
                 <th>Destino</th>
                 <th>Tempo do voo</th>
@@ -20,7 +20,7 @@
         <tbody>
             @foreach ($registros as $p)
                 <tr>
-                    <th>{{ $p->compania }}</th>
+                    <th>{{ $p->companhia }}</th>
                     <th>{{ $p->origem }}</th>
                     <th>{{ $p->destino }}</th>
                     <th>{{ $p->horas }}</th>

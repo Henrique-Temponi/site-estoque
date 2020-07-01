@@ -1,7 +1,7 @@
 <div class="input-field row">
-        <label for="compania">Compania: </label>
-        <input type="text" name="compania" id="compania" value="{{
-            isset($registro['compania']) ? $registro['compania'] : ''
+        <label for="companhia">Companhia: </label>
+        <input type="text" name="companhia" id="companhia" value="{{
+            isset($registro['companhia']) ? $registro['companhia'] : ''
         }}">
     </div>
     <div class="input-field row">

@@ -16,11 +16,11 @@ class CreateProdutos extends Migration
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('compania');
+            $table->string('companhia');
             $table->string('origem');
             $table->string('destino');
             $table->integer('horas');
-            $table->timestamps();   
+            $table->timestamps();
         });
     }
 

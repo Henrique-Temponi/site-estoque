@@ -33,7 +33,7 @@ class RegistroController extends Controller
         // dd($request);   
         
         
-        if ($request->filled(['compania', 'origem', 'destino', 'horas'])) {
+        if ($request->filled(['companhia', 'origem', 'destino', 'horas'])) {
             
                 // $registro = new Flight($request->except('horas'));
             $registro = new Flight($request->all());
@@ -99,15 +99,15 @@ class RegistroController extends Controller
         //     ['user_id', '=', Auth::id()],
         // ])->get();
 
-        $compania = Flight::where([
-            ['compania', '=', $request->input('compania')],
+        $companhia = Flight::where([
+            ['companhia', '=', $request->input('companhia')],
             ['user_id', '=', Auth::id()],
         ]);
 
         $origem = Flight::where([
             ['origem', '=', $request->input('origem')],
             ['user_id', '=', Auth::id()],
-        ])->union($compania);
+        ])->union($companhia);
 
         $destino = Flight::where([
             ['destino', '=', $request->input('destino')],

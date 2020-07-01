@@ -25,28 +25,28 @@ class FlightSeeder extends Seeder
         DB::table('Flights')->insert([
             [
                 'user_id'   => 1,
-                'compania'  => 'OPEDC',
+                'companhia'  => 'OPEDC',
                 'origem'    => 'BH',
                 'destino'   => 'SP',
                 'horas'     => 1,
             ],
             [
                 'user_id'   => 1,
-                'compania'  => 'FAKEN',
+                'companhia'  => 'FAKEN',
                 'origem'    => 'FH',
                 'destino'   => 'SC',
                 'horas'     => 3,
             ],
             [
                 'user_id'   => 2,
-                'compania'  => 'JUDSC',
+                'companhia'  => 'JUDSC',
                 'origem'    => 'LE',
                 'destino'   => 'VF',
                 'horas'     => 1,
             ],
             [
                 'user_id'   => 1,
-                'compania'  => 'PEACD',
+                'companhia'  => 'PEACD',
                 'origem'    => 'OK',
                 'destino'   => 'PW',
                 'horas'     => 1,
