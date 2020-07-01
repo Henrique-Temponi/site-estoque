@@ -99,13 +99,37 @@ class RegistroController extends Controller
         //     ['user_id', '=', Auth::id()],
         // ])->get();
 
-        $registrosFiltrados = Flight::where([
+        $compania = Flight::where([
             ['compania', '=', $request->input('compania')],
             ['user_id', '=', Auth::id()],
-        ])->get();
+        ]);
 
-        // dd($registrosFiltrados);
+        $origem = Flight::where([
+            ['origem', '=', $request->input('origem')],
+            ['user_id', '=', Auth::id()],
+        ])->union($compania);
 
-        return view('site.listar')->with('registros', $registrosFiltrados);
+        $destino = Flight::where([
+            ['destino', '=', $request->input('destino')],
+            ['user_id', '=', Auth::id()],
+        ])->union($origem)->get();
+
+        // $registrosFiltrados = Flight::where([
+        //     []
+        // ]);
+
+        // $origem->add($compania->get('0'));
+
+        // if($compania->get('0') != null){
+
+        //     $x = count($compania);
+
+        //     for ($i=0; $i < $x; $i++) { 
+        //         $origem->add($compania->get($i));
+        //     }
+        // }
+        // dd($destino);
+
+        return view('site.listar')->with('registros', $destino);
     }
 }
