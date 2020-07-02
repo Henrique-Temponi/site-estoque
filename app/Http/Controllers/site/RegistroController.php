@@ -16,6 +16,12 @@ class RegistroController extends Controller
 
         $registros = Flight::where('user_id', [$id])->get();
 
+        // foreach ($registros as $voo) {
+        //     dd($voo->airports);
+        // }
+
+        // dd($registros);
+
         return view('site.listar')->with('registros', $registros);
     }
 
@@ -81,7 +87,10 @@ class RegistroController extends Controller
 
     public function deletar($id)
     {
-        Flight::find($id)->delete();
+
+        $voo = Flight::find($id);
+        $voo->airports()->detach();
+        $voo->delete();
 
         return redirect()
             ->action('site\RegistroController@index')

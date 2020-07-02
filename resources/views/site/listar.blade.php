@@ -15,6 +15,7 @@
                 <th>Origem</th>
                 <th>Destino</th>
                 <th>Tempo do voo</th>
+                <th>Conexcoes</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,11 @@
                     <th>{{ $p->origem }}</th>
                     <th>{{ $p->destino }}</th>
                     <th>{{ $p->horas }}</th>
+                    <th>
+                        @foreach ($p->airports as $airport)
+                            {{ $airport->name }}
+                        @endforeach
+                    </th>
                     <th>
                         <a href="{{ route('site.editar', $p->id) }}" class="btn">Editar</a>
                         <a href="{{ route('site.deletar', $p->id) }}" class="btn">Deletar</a>

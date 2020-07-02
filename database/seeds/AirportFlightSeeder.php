@@ -48,7 +48,7 @@ class AirportFlightSeeder extends Seeder
             ]
         ]);
 
-        dd(Flight::find(1)->airports);
+        // dd(Flight::find(1)->airports);
     }
 
 }
