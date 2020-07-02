@@ -13,10 +13,10 @@ class CreateFlightsAirports extends Migration
      */
     public function up()
     {
-        Schema::create('flights_airports', function (Blueprint $table) {
+        Schema::create('airports_flights', function (Blueprint $table) {
             // $table->id();
-            $table->foreignId('flights_id')->constrained();
-            $table->foreignId('airports_id')->constrained();
+            $table->foreignId('flight_id')->constrained();
+            $table->foreignId('airport_id')->constrained();
             $table->timestamps();
         });
     }
