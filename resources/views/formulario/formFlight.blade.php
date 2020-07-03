@@ -1,3 +1,5 @@
+<h3>Voo</h3>
+
 <div class="input-field row">
         <label for="companhia">Companhia: </label>
         <input type="text" name="companhia" id="companhia" value="{{
@@ -22,5 +24,4 @@
             isset($registro['horas']) ? $registro['horas'] : ''
         }}">
     </div>
-    <button type="submit" class="btn ">Registrar</button>
 </div>

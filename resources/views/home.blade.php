@@ -2,6 +2,7 @@
     <head>
         <title>Home</title>
         <link rel="stylesheet" href="{{ asset('css/materialize.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
 

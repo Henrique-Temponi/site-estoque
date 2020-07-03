@@ -2,7 +2,7 @@
 
 @section('conteudo')
 <div class="row">
-    <h2>Registrar novo voo</h2>
+    <h2>Novo</h2>
     <form action="{{ route('site.novo') }}" method="POST">
         {{ csrf_field() }}
         @include('formulario.formFlight')
