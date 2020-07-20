@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Flight extends Model
 {
     protected $fillable = [
-        'companhia', 'origem', 'destino', 'horas'
+        'voo', 'destino'
     ];
 
-    public function airports()
+    public function user()
     {
-        return $this->belongsToMany('App\Airport', 'airports_flights');
+        return $this->belongsToMany('App\User', 'flight_user');
     }
 }

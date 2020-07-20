@@ -15,13 +15,16 @@ class CreateFlights extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->string('companhia');
-            $table->string('origem');
+            $table->string('voo');
             $table->string('destino');
-            $table->integer('horas');
             $table->timestamps();
         });
+
+        Schema::create('flight_user', function (Blueprint $table) {
+            $table->foreignId('flight_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+        });
+        
     }
 
     /**
@@ -31,6 +34,7 @@ class CreateFlights extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('flight_user');
         Schema::dropIfExists('flights');
     }
 }

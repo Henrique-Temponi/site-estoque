@@ -16,12 +16,20 @@ class loginController extends Controller
         
         if (Auth::attempt($credenciais)) {
             
-            $request->session()->flash('msg', 'Login feito com sucesso');
+            $request->session()->flash('msg', [
+                'mensagem' =>  'Login feito com sucesso',
+                'class' => 'green'
+            ]);
+
             return redirect()->route('site.home');
         }
 
         
-        $request->session()->flash('msg', 'Erro: verifique os dados');
+        $request->session()->flash('msg', [
+            'mensagem' =>  'Erro: Confira os dados',
+            'class' => 'red'
+        ]);
+
         return redirect()->route('site.login');
     }
 

@@ -14,12 +14,12 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     
+                    <li><a href="{{ route('site.home') }}">Todos os Voos</a></li>
                     @if (Auth::guest())
-                        <li><a href="{{ route('site.login') }}">Entrar</a></li>
+                        <li><a href="{{ route('site.login') }}">Log-In</a></li>
                         <li><a href="{{ route('site.login.novo') }}">Criar Usuario</a></li>
                     @else
-                        <li><a href="{{ route('site.novo') }}">Novo</a></li>
-                        <li><a href="{{ route('site.listar') }}">Listar</a></li>
+                        <li><a href="{{ route('usuario.voos') }}">Meus Voos</a></li>
                         <li><a href="{{ route('site.logout') }}">Sair</a></li>
                     @endif
                     
@@ -31,12 +31,10 @@
     @if(Session::has('msg'))
     <div class="container">
         <div class="row">
-            <div class="col s12 m5">
-                <div class="card-panel teal">
-                    <span class="white-text">
-                        {{ Session::get('msg') }}
-                    </span>
-                </div>
+            <div align="center" class="card-panel {{ Session::get('msg')['class'] }}">
+                <span class="white-text">
+                    {{ Session::get('msg')['mensagem'] }}
+                </span>
             </div>
         </div>
     </div>

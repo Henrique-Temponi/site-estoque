@@ -22,35 +22,71 @@ class FlightSeeder extends Seeder
         // $flight->horas = 1;
         // $flight->save();
 
-        DB::table('Flights')->insert([
+        DB::table('flights')->insert([
             [
-                'user_id'   => 1,
-                'companhia'  => 'OPEDC',
-                'origem'    => 'BH',
-                'destino'   => 'SP',
-                'horas'     => 1,
+                'voo'  => 'ESDEC',
+                'destino'   => 'ES',
             ],
             [
-                'user_id'   => 1,
-                'companhia'  => 'FAKEN',
-                'origem'    => 'FH',
-                'destino'   => 'SC',
-                'horas'     => 3,
+                'voo'  => 'YEUDC',
+                'destino'   => 'XC',
             ],
             [
-                'user_id'   => 2,
-                'companhia'  => 'JUDSC',
-                'origem'    => 'LE',
-                'destino'   => 'VF',
-                'horas'     => 1,
+                'voo'  => 'YEET',
+                'destino'   => 'RT',
             ],
             [
-                'user_id'   => 1,
-                'companhia'  => 'PEACD',
-                'origem'    => 'OK',
-                'destino'   => 'PW',
-                'horas'     => 1,
-            ]
+                'voo'  => 'FACVR',
+                'destino'   => 'HG',
+            ],
+            [
+                'voo'  => 'EOSPC',
+                'destino'   => 'BH',
+            ],
+            [
+                'voo'  => 'EOSPC',
+                'destino'   => 'HC',
+            ],
+            [
+                'voo'  => 'EOSPC',
+                'destino'   => 'BH',
+            ],
+            [
+                'voo'  => 'EOSPC',
+                'destino'   => 'BH',
+            ],
+            [
+                'voo'  => 'EOSPC',
+                'destino'   => 'ED',
+            ],
+            [
+                'voo'  => 'EOSPC',
+                'destino'   => 'BH',
+            ],
+            [
+                'voo'  => 'EOSPC',
+                'destino'   => 'FE',
+            ],
+            [
+                'voo'  => 'EEAPC',
+                'destino'   => 'HG',
+            ],
+            [
+                'voo'  => 'EOSCE',
+                'destino'   => 'BH',
+            ],
+            [
+                'voo'  => 'XAESC',
+                'destino'   => 'BV',
+            ],
+            [
+                'voo'  => 'EEASC',
+                'destino'   => 'ES',
+            ],
+            [
+                'voo'  => 'POESC',
+                'destino'   => 'UI',
+            ],
         ]);
     }
 }

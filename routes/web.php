@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [
     'as' => 'site.home',
-    function () {
-        return view ('home');
-    }
+    'uses' => 'site\HomeController@index'
 ]);
 
 Route::get('/login', [
@@ -88,6 +86,16 @@ Route::group(['middleware' => ['auth']],
         Route::get('/listar/pesquisar', [
             'as' => 'site.listar.pesquisar',
             'uses' => 'site\RegistroController@pesquisar'
+        ]);
+
+        Route::get('/usuario/reservar/{id}', [
+            'as' => 'usuario.reservar',
+            'uses' => 'Usuario\VooController@reservar'
+        ]);
+
+        Route::get('/usuario/voos', [
+            'as' => 'usuario.voos',
+            'uses' => 'Usuario\VooController@index'
         ]);
     }
 );

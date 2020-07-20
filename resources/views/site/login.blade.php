@@ -3,7 +3,7 @@
 @section('conteudo')
 
 <div class="row">
-    <h2>login</h2>
+    <h2>Login</h2>
     
     <form action="{{ route('site.login') }}" method="POST">
         {{ csrf_field() }}

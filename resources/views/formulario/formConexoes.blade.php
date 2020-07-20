@@ -15,5 +15,5 @@
             @endforeach
         </tbody>
     </table>
-    <button type="" class="btn">Adicionar</button>
+    <!-- <button type="" class="btn">Adicionar</button> -->
 </div>
