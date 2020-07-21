@@ -1,5 +1,10 @@
 # SITE-ESTOQUE
 
+## Requirements
+
+-   Docker
+-   Docker Compose
+
 ## How to use ?
 
 ```
