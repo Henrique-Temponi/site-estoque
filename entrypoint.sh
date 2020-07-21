@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
-php artisan key:generate
-
 composer install
+
+php artisan key:generate
 
 function tryToMigrate() {
     timeout=5
