@@ -18,7 +18,8 @@
                         <li><a href="{{ route('site.login') }}">Fazer Log-in</a></li>
                         <li><a href="{{ route('site.registrar') }}">Regisrar-se</a></li>
                     @else
-                        <a href="#" class="dropdown-trigger" data-target="dropdown1">Bem vindo, {{ Auth::user()->name }}</a>
+                        <li><a href="{{ route('site.home') }}">Todos os voos</a></li>
+                        <li><a href="#" class="dropdown-trigger" data-target="dropdown1">Bem vindo, {{ Auth::user()->name }}</a></li>
                     @endif
                     
                     <ul id="dropdown1" class="dropdown-content">

@@ -17,18 +17,20 @@ class VooController extends Controller
 
         // dd($voo);
 
-        return view('usuario.index')->with('voo', $voo);
+        return view('web.usuario.index')->with('voo', $voo);
     }
 
     public function reservar($id)
     {
 
-        if(!User::find(Auth::id())->flight()->find($id)){
+        $voo = User::find(Auth::id())->flight();
 
-            User::find(Auth::id())->flight()->save(Flight::find($id));
+        if(!$voo->find($id)){
+
+            $voo->save(Flight::find($id));
 
             Session::flash('msg', [
-                'mensagem' =>  'Erro: Voo reservado',
+                'mensagem' =>  'Voo reservado com sucesso',
                 'class' => 'green'
             ]);
 
@@ -43,10 +45,5 @@ class VooController extends Controller
 
             return redirect()->back();
         }
-
-
-        // dd(User::find(Auth::id())->flight);
-
-        
     }
 }
