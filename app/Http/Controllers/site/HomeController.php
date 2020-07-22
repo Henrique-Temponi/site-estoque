@@ -12,6 +12,6 @@ class HomeController extends Controller
     {
         $voo = Flight::all();
 
-        return view('site.index')->with('voo', $voo);
+        return view('web.site.index')->with('voo', $voo);
     }
 }

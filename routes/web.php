@@ -20,26 +20,22 @@ Route::get('/', [
 
 Route::get('/login', [
     'as' => 'site.login',
-    function() {
-        return view ('site.login');
-    }
+    'uses' => 'site\LoginController@login'
 ]);
 
 Route::post('/login', [
     'as' => 'site.login',
-    'uses' => 'site\loginController@verificar'
+    'uses' => 'site\LoginController@verificar'
 ]);
 
-Route::get('/login/novo', [
-    'as' => 'site.login.novo',
-    function(){
-        return view('login.novo');
-    }
+Route::get('/registrar', [
+    'as' => 'site.registrar',
+    'uses' => 'site\LoginController@registrar'
 ]);
 
-Route::post('/login/novo', [
-    'as' => 'site.login.novo',
-    'uses' => 'site\loginController@create'
+Route::post('/registrar', [
+    'as' => 'site.registrar',
+    'uses' => 'site\LoginController@create'
 ]);
 
 Route::group(['middleware' => ['auth']], 
@@ -80,7 +76,7 @@ Route::group(['middleware' => ['auth']],
 
         Route::get('/logout', [
             'as' => 'site.logout',
-            'uses' => 'site\loginController@logout'
+            'uses' => 'site\LoginController@logout'
         ]);
 
         Route::get('/listar/pesquisar', [

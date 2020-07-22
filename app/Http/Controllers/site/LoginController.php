@@ -3,12 +3,21 @@
 namespace App\Http\Controllers\site;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User as RequestsUser;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class loginController extends Controller
+class LoginController extends Controller
 {
+
+    public function login()
+    {
+        return view('web.login.index');
+    }
+
+
+
     public function verificar (Request $request)
     {   
         // dd($request);
@@ -40,9 +49,21 @@ class loginController extends Controller
         return redirect()->route('site.home');
     }
 
-    public function create(Request $request)
+    public function registrar()
+    {
+        return view('web.login.novo');
+    }
+
+    public function create(RequestsUser $request)
     {
         // dd($request);
+
+        // $request->validate([
+        //     'email' => ['required'],
+        //     'password' => ['required'],
+        // ]);
+
+        
 
         if(strlen($request['name']) > 0 && strlen($request['password']) > 0){
             

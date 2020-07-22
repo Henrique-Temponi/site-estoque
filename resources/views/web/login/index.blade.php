@@ -3,11 +3,13 @@
 @section('conteudo')
 
 <div class="row">
-    <h2>Login</h2>
+    <h2>Iniciar Sessão</h2>
     
     <form action="{{ route('site.login') }}" method="POST">
         {{ csrf_field() }}
-        @include('login.formLogin')
+        @include('web.login._form')
+
+        <button type="submit" class="btn">Entrar</button>
     </form>
 </div>
 
