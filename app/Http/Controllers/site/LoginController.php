@@ -21,7 +21,8 @@ class LoginController extends Controller
     public function verificar (Request $request)
     {   
         // dd($request);
-        $credenciais = $request->only('name', 'password');
+        $credenciais = $request->only('email', 'password');
+        // dd($credenciais);
         
         if (Auth::attempt($credenciais)) {
             
@@ -63,21 +64,15 @@ class LoginController extends Controller
         //     'password' => ['required'],
         // ]);
 
+        $usuario = new User($request->except('password'));
+        $usuario->password = bcrypt($request->password);
+        $usuario->save();
+
+        $request->session()->flash('msg', [
+            'mensagem' =>  'Usuario criado com sucesso',
+            'class' => 'green white-text'
+        ]);
         
-
-        if(strlen($request['name']) > 0 && strlen($request['password']) > 0){
-            
-            // User::create($request->all())->save();
-            $usuario = new User();
-            $usuario->name = $request['name'];
-            $usuario->password = bcrypt($request['password']);
-            $usuario->save();
-            
-            $request->session()->flash('msg', 'Usuario criado com sucesso');
-            return redirect()->route('site.login');
-        }
-
-        $request->session()->flash('msg', 'Erro: verifique os dados');
-        return redirect()->route('site.login.novo');
+        return redirect()->route('site.login');
     }
 }

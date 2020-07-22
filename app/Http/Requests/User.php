@@ -26,6 +26,7 @@ class User extends FormRequest
         return [
             'email' => ['required'],
             'password' => ['required'],
+            'name' => ['required'],
         ];
     }
 
@@ -40,7 +41,8 @@ class User extends FormRequest
     {
         return [
             'email' => 'O email',
-            'password' => 'A senha'
+            'password' => 'A senha',
+            'name' => 'O nome'
         ];
     }
 }
