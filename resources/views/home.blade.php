@@ -18,10 +18,15 @@
                         <li><a href="{{ route('site.login') }}">Fazer Log-in</a></li>
                         <li><a href="{{ route('site.registrar') }}">Regisrar-se</a></li>
                     @else
-                        <li><a href="{{ route('usuario.voos') }}">Meus Voos</a></li>
-                        <li><a href="{{ route('site.logout') }}">Sair</a></li>
+                        <a href="#" class="dropdown-trigger" data-target="dropdown1">Bem vindo, {{ Auth::user()->name }}</a>
                     @endif
                     
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li><a href="{{ route('usuario.voos') }}">Meus Voos</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ route('site.logout') }}">Sair</a></li>
+                    </ul>
+
                 </ul>
             </div>
         </div>
