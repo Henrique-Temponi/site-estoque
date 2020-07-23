@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Nao Trivago</title>
+        <title>Sistema admin</title>
         <link rel="stylesheet" href="{{ asset('css/materialize.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
@@ -10,23 +10,17 @@
         <div class="nav-wrapper blue">
 
             <div class="container">
-                <a href="{{ route('site.home') }}" class="brand-logo">MaxVoos</a>
+                <a href="{{ route('site.home') }}" class="brand-logo">Admin</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
+
+                    <li><a target="_blanck" href="{{ route('site.home') }}">Site</a></li>
                     
-                    @if (Auth::guest())
-                        <li><a href="{{ route('site.login') }}">Fazer Log-in</a></li>
-                        <li><a href="{{ route('site.registrar') }}">Regisrar-se</a></li>
-                    @else
+                    @if(Auth::guest())
                         <li><a href="{{ route('site.home') }}">Todos os voos</a></li>
-                        <li><a href="#" class="dropdown-trigger" data-target="dropdown1">Bem vindo, {{ Auth::user()->name }}</a></li>
-                    @endif
-                    
-                    <ul id="dropdown1" class="dropdown-content">
-                        <li><a href="{{ route('usuario.voos') }}">Meus Voos</a></li>
-                        <li class="divider"></li>
+                    @else
                         <li><a href="{{ route('site.logout') }}">Sair</a></li>
-                    </ul>
+                    @endif
 
                 </ul>
             </div>

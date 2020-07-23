@@ -38,50 +38,22 @@ Route::post('/registrar', [
     'uses' => 'site\LoginController@create'
 ]);
 
+Route::get('/admin/login', [
+    'as' => 'admin.login',
+    'uses' => 'Admin\AdminController@login'
+]);
+
+Route::post('/admin/login', [
+    'as' => 'admin.login',
+    'uses' => 'Admin\AdminController@verificar'
+]);
+
 Route::group(['middleware' => ['auth']], 
     function() {
-
-        Route::get('/listar', [
-            'as' => 'site.listar',
-            'uses' => 'site\RegistroController@index'
-        ]);
-        
-        Route::get('/novo', [
-            'as' => 'site.novo',
-            function ()
-            {
-                return view('site.novo');
-            }
-        ]);
-
-        Route::post('/novo', [
-            'as' => 'site.novo',
-            'uses' => 'site\RegistroController@create'
-        ]);
-
-        Route::get('/editar/{id}', [
-            'as' => 'site.editar',
-            'uses' => 'site\RegistroController@editar'
-        ]);
-
-        Route::post('/editar/{id}', [
-            'as' => 'site.editar',
-            'uses' => 'site\RegistroController@atualizar'
-        ]);
-
-        Route::get('/deletar/{id}', [
-            'as' => 'site.deletar',
-            'uses' => 'site\RegistroController@deletar'
-        ]);
 
         Route::get('/logout', [
             'as' => 'site.logout',
             'uses' => 'site\LoginController@logout'
-        ]);
-
-        Route::get('/listar/pesquisar', [
-            'as' => 'site.listar.pesquisar',
-            'uses' => 'site\RegistroController@pesquisar'
         ]);
 
         Route::get('/usuario/reservar/{id}', [
@@ -92,6 +64,16 @@ Route::group(['middleware' => ['auth']],
         Route::get('/usuario/voos', [
             'as' => 'usuario.voos',
             'uses' => 'Usuario\VooController@index'
+        ]);
+
+        Route::get('/usuario/voos', [
+            'as' => 'usuario.voos',
+            'uses' => 'Usuario\VooController@index'
+        ]);
+
+        Route::get('/admin', [
+            'as' => 'admin.index',
+            'uses' => 'Admin\AdminController@index'
         ]);
     }
 );
