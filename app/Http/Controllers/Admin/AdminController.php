@@ -100,4 +100,16 @@ class AdminController extends Controller
 
         return redirect()->route('admin.voos.listar');
     }
+
+    public function deletar($id)
+    {
+        Flight::find($id)->delete();
+
+        Session::flash('msg', [
+            'mensagem' => 'Voo deletado com sucesso',
+            'class' => 'green'
+        ]);
+
+        return redirect()->route('admin.voos.listar');
+    }
 }

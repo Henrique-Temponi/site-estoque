@@ -32,7 +32,7 @@
                     <td><a class="btn red disabled" href="#">Deletar</a></td>
                 @else
                     <td><a class="btn green" href="{{ route('admin.voos.editar', $voo->id) }}">Editar</a></td>
-                    <td><a class="btn red" href="#">Deletar</a></td>
+                    <td><a class="btn red" href="{{ route('admin.voos.deletar', $voo->id) }}">Deletar</a></td>
                 @endif
             </tr>
             @endforeach

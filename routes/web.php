@@ -95,5 +95,10 @@ Route::group(['middleware' => ['auth']],
             'as' => 'admin.voos.editar',
             'uses' => 'Admin\AdminController@salvar'
         ]);
+
+        Route::get('/admin/voos/deletar/{id}', [
+            'as' => 'admin.voos.deletar',
+            'uses' => 'Admin\AdminController@deletar'
+        ]);
     }
 );
