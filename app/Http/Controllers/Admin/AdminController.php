@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Flight;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Voo as RequestVoo;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -51,8 +52,11 @@ class AdminController extends Controller
     public function index()
     {
         $voos_quantidades = Flight::all()->count();
+        $user_quantidades = User::all()->count();
 
-        return view('admin.home')->with('voos_quantidade', $voos_quantidades);
+        return view('admin.home')
+            ->with('voos_quantidade', $voos_quantidades)
+            ->with('user_quantidade', $user_quantidades);
     }
 
     public function listar()

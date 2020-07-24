@@ -100,5 +100,16 @@ Route::group(['middleware' => ['auth']],
             'as' => 'admin.voos.deletar',
             'uses' => 'Admin\AdminController@deletar'
         ]);
+
+
+        Route::get('/admin/usuarios/listar', [
+            'as' => 'admin.usuarios.listar',
+            'uses' => 'Admin\UserController@listar'
+        ]);
+
+        Route::get('/admin/usuarios/deletar/{id}', [
+            'as' => 'admin.usuarios.deletar',
+            'uses' => 'Admin\UserController@deletar'
+        ]);
     }
 );

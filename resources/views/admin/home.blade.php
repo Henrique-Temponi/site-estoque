@@ -22,11 +22,11 @@
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
           <span class="card-title">Usuarios cadastrados</span>
-          <p>Place_holder: numero totais de usuarios</p>
+          <p>Numero total de usuarios: {{ $user_quantidade}}</p>
         </div>
         <div class="card-action">
-          <a href="#">Cadastrar usuario</a>
-          <a href="#">Listar usuarios</a>
+          <!-- <a href="">Cadastrar usuario</a> -->
+          <a href="{{ route('admin.usuarios.listar') }}">Listar usuarios</a>
         </div>
       </div>
     </div>

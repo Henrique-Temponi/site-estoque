@@ -2,16 +2,16 @@
 
 @section('conteudo')
 
-<h3>Adicionar voo</h3>
+<h3>Editar Usuario</h3>
 
 @include('admin.errors')
 
 <form action="" method="post">
 
     {{ csrf_field() }}
-    @include('admin.voo._form')
+    @include('admin.usuario._form')
 
-    <button type="submit" class="btn">Adicionar voo</button>
+    <button type="submit" class="btn">Atualizar usuario</button>
 </form>
 
 @endsection
