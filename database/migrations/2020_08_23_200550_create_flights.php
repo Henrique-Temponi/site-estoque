@@ -16,7 +16,8 @@ class CreateFlights extends Migration
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
             $table->string('voo');
-            $table->string('destino');
+            $table->foreignId('destino_id')->constrained();
+            $table->foreignId('compahia_id')->constrained();
             $table->timestamps();
         });
 

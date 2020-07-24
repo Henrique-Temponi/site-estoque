@@ -24,68 +24,24 @@ class FlightSeeder extends Seeder
 
         DB::table('flights')->insert([
             [
-                'voo'  => 'ESDEC',
-                'destino'   => 'ES',
+                'voo'  => 'HDYED',
+                'destino_id'   => 1,
+                'compahia_id' => 2,
             ],
             [
-                'voo'  => 'YEUDC',
-                'destino'   => 'XC',
+                'voo'  => 'LDKEM',
+                'destino_id'   => 2,
+                'compahia_id' => 3,
             ],
             [
-                'voo'  => 'YEET',
-                'destino'   => 'RT',
+                'voo'  => 'POEMD',
+                'destino_id'   => 1,
+                'compahia_id' => 1,
             ],
             [
-                'voo'  => 'FACVR',
-                'destino'   => 'HG',
-            ],
-            [
-                'voo'  => 'EOSPC',
-                'destino'   => 'BH',
-            ],
-            [
-                'voo'  => 'EOSPC',
-                'destino'   => 'HC',
-            ],
-            [
-                'voo'  => 'EOSPC',
-                'destino'   => 'BH',
-            ],
-            [
-                'voo'  => 'EOSPC',
-                'destino'   => 'BH',
-            ],
-            [
-                'voo'  => 'EOSPC',
-                'destino'   => 'ED',
-            ],
-            [
-                'voo'  => 'EOSPC',
-                'destino'   => 'BH',
-            ],
-            [
-                'voo'  => 'EOSPC',
-                'destino'   => 'FE',
-            ],
-            [
-                'voo'  => 'EEAPC',
-                'destino'   => 'HG',
-            ],
-            [
-                'voo'  => 'EOSCE',
-                'destino'   => 'BH',
-            ],
-            [
-                'voo'  => 'XAESC',
-                'destino'   => 'BV',
-            ],
-            [
-                'voo'  => 'EEASC',
-                'destino'   => 'ES',
-            ],
-            [
-                'voo'  => 'POESC',
-                'destino'   => 'UI',
+                'voo'  => 'UWNRO',
+                'destino_id'   => 3,
+                'compahia_id' => 3,
             ],
         ]);
     }

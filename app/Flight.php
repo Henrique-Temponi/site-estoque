@@ -14,4 +14,14 @@ class Flight extends Model
     {
         return $this->belongsToMany('App\User', 'flight_user');
     }
+
+    public function destino()
+    {
+        return $this->belongsTo('App\Destino');
+    }
+
+    public function compahia()
+    {
+        return $this->belongsTo('App\Compahia');
+    }
 }
