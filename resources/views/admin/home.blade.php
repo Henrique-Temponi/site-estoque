@@ -38,8 +38,8 @@
           <p>Numero de Compahia cadastradas: {{ $compahia_quantidades }}</p>
         </div>
         <div class="card-action">
-          <a href="{{ route('admin.destinos.adicionar') }}">Cadastrar compahia</a>
-          <a href="{{ route('admin.destinos.listar') }}">Listar compahias</a>
+          <a href="{{ route('admin.compahias.adicionar') }}">Cadastrar compahia</a>
+          <a href="{{ route('admin.compahias.listar') }}">Listar compahias</a>
         </div>
       </div>
     </div>

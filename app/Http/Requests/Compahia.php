@@ -13,7 +13,7 @@ class Compahia extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,21 @@ class Compahia extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => ['required'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => ':attribute não pode estar vazio.',
+        ];
+    }
+    
+    public function attributes()
+    {
+        return [
+            'nome' => 'O nome',
         ];
     }
 }

@@ -143,5 +143,36 @@ Route::group(['middleware' => ['auth']],
             'as' => 'admin.destinos.deletar',
             'uses' => 'Admin\DestinoController@deletar'
         ]);
+
+        //ROTA DE COMPAHIA
+        Route::get('/admin/compahias/listar', [
+            'as' => 'admin.compahias.listar',
+            'uses' => 'Admin\CompahiaController@listar'
+        ]);
+
+        Route::get('/admin/compahias/adicionar', [
+            'as' => 'admin.compahias.adicionar',
+            'uses' => 'Admin\CompahiaController@adicionar'
+        ]);
+
+        Route::post('/admin/compahias/adicionar', [
+            'as' => 'admin.compahias.adicionar',
+            'uses' => 'Admin\CompahiaController@atualizar'
+        ]);
+
+        Route::get('/admin/compahias/editar/{id}', [
+            'as' => 'admin.compahias.editar',
+            'uses' => 'Admin\CompahiaController@editar'
+        ]);
+
+        Route::post('/admin/compahias/editar/{id}', [
+            'as' => 'admin.compahias.editar',
+            'uses' => 'Admin\CompahiaController@salvar'
+        ]);
+
+        Route::get('/admin/compahias/deletar/{id}', [
+            'as' => 'admin.compahias.deletar',
+            'uses' => 'Admin\CompahiaController@deletar'
+        ]);
     }
 );
