@@ -17,6 +17,7 @@
         <thead>
             <th>Nome do voo</th>
             <th>Destino</th>
+            <th>Compahia</th>
             <th>Numero de Reservas</th>
             <th>Opcões</th>
 
@@ -25,7 +26,8 @@
             @foreach($voos as $voo)
             <tr>
                 <td>{{ $voo->voo }}</td>
-                <td>{{ $voo->destino }}</td>
+                <td>{{ $voo->destino->nome }}</td>
+                <td>{{ $voo->compahia->nome }}</td>
                 <td>{{ $voo->user()->count()}}</td>
                 @if($voo->user()->count())
                     <td><a class="btn green disabled" href="#">Editar</a></td>

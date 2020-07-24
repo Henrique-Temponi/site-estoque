@@ -11,7 +11,8 @@
             <div class="card indigo">
                 <div class="card-content white-text">
                 <span class="card-title">Nome do voo: {{ $p->voo }}</span>
-                    <p>Nome do destino: {{ $p->destino}}</p>
+                    <p>Nome do destino: {{ $p->destino->nome }}</p>
+                    <p>Abreviao: {{ $p->destino->abreviacao }}</p>
                 </div>
                 <div class="card-action">
                     <a href="{{ route('usuario.reservar', $p->id) }}">Reserva</a>

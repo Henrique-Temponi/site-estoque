@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Compahia;
+use App\Destino;
 use App\Flight;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Voo as RequestVoo;
@@ -70,11 +72,19 @@ class AdminController extends Controller
     
     public function adicionar()
     {
-        return view('admin.voo.adicionar');
+        $compahia = Compahia::all();
+        $destino = Destino::all();
+
+        return view('admin.voo.adicionar')
+            ->with('compahia', $compahia)
+            ->with('destino', $destino);
     }
 
     public function atualizar(RequestVoo $request)
     {
+
+        // dd($request);
+
         Flight::create($request->all())->save();
 
         $request->session()->flash('msg', [
@@ -89,8 +99,12 @@ class AdminController extends Controller
     public function editar($id)
     {
         $voo = Flight::find($id);
+        $destino = Destino::all();
+        $compahia = Compahia::all();
 
-        return view('admin.voo.editar')->with('voo', $voo);
+        return view('admin.voo.editar')->with('voo', $voo)
+            ->with('compahia', $compahia)
+            ->with('destino', $destino);
     }
 
     public function salvar(RequestVoo $request, $id)

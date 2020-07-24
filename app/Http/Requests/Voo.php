@@ -26,7 +26,6 @@ class Voo extends FormRequest
         return [
             
             'voo' => ['required'],
-            'destino' => ['required'],
         ];
     }
 
@@ -41,7 +40,6 @@ class Voo extends FormRequest
     {
         return [
             'voo' => 'O voo',
-            'destino' => 'O destino'
         ];
     }
 }
