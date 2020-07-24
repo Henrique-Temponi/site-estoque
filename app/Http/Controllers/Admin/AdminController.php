@@ -55,10 +55,15 @@ class AdminController extends Controller
     {
         $voos_quantidades = Flight::all()->count();
         $user_quantidades = User::all()->count();
+        $destino_quantidades = Destino::all()->count();
+        $compahia_quantidades = Compahia::all()->count();
 
         return view('admin.home')
             ->with('voos_quantidade', $voos_quantidades)
-            ->with('user_quantidade', $user_quantidades);
+            ->with('user_quantidade', $user_quantidades)
+            ->with('destino_quantidades', $destino_quantidades)
+            ->with('compahia_quantidades', $compahia_quantidades);
+            
     }
 
     public function listar()

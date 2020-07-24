@@ -34,8 +34,8 @@
     <div class="col s12 m6">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
-          <span class="card-title">compahias cadastradas</span>
-          <p>Place_holder: numero totais de compahias</p>
+          <span class="card-title">Compahias cadastradas</span>
+          <p>Numero de Compahia cadastradas: {{ $compahia_quantidades }}</p>
         </div>
         <div class="card-action">
           <a href="#">Cadastrar compahia</a>
@@ -47,8 +47,8 @@
     <div class="col s12 m6">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
-          <span class="card-title">destinos cadastrados</span>
-          <p>Place_holder: numero totais de destinos</p>
+          <span class="card-title">Destinos cadastrados</span>
+          <p>Numero de destinos cadastrados: {{ $destino_quantidades }}</p>
         </div>
         <div class="card-action">
           <a href="#">Cadastrar destino</a>
