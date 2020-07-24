@@ -50,7 +50,9 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.home');
+        $voos_quantidades = Flight::all()->count();
+
+        return view('admin.home')->with('voos_quantidade', $voos_quantidades);
     }
 
     public function listar()

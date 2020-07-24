@@ -7,7 +7,7 @@
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
           <span class="card-title">Voos disponiveis</span>
-          <p>Place_holer: numero totais de voos</p>
+          <p>Numero total de voos: {{ $voos_quantidade }}</p>
         </div>
         <div class="card-action">
           <a href="{{ route('admin.voos.adicionar') }}">Adicionar voo</a>
