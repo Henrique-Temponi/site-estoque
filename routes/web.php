@@ -61,6 +61,11 @@ Route::group(['middleware' => ['auth']],
             'uses' => 'Usuario\VooController@reservar'
         ]);
 
+        Route::get('/usuario/reservar/deletar/{id}', [
+            'as' => 'usuario.reservar.deletar',
+            'uses' => 'Usuario\VooController@deletar'
+        ]);
+
         Route::get('/usuario/voos', [
             'as' => 'usuario.voos',
             'uses' => 'Usuario\VooController@index'

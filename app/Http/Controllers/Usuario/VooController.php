@@ -46,4 +46,11 @@ class VooController extends Controller
             return redirect()->back();
         }
     }
+
+    public function deletar($id)
+    {
+        User::find(Auth::id())->flight(Flight::find($id))->detach();
+
+        return redirect()->route('usuario.voos');
+    }
 }
