@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Flight;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Voo as RequestVoo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -58,4 +60,20 @@ class AdminController extends Controller
         return view('admin.voo.listar')->with('voos', $voos);
     }
     
+    public function adicionar()
+    {
+        return view('admin.voo.adicionar');
+    }
+
+    public function atualizar(RequestVoo $request)
+    {
+        Flight::create($request->all())->save();
+
+        $request->session()->flash('msg', [
+            'mensagem' => 'Voo Adicionado com sucesso',
+            'class' => 'green'
+        ]);
+
+        return redirect()->route('admin.voos.listar');
+    }
 }

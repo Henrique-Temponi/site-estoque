@@ -10,7 +10,7 @@
           <p>Place_holer: numero totais de voos</p>
         </div>
         <div class="card-action">
-          <a href="#">Adicionar voo</a>
+          <a href="{{ route('admin.voos.adicionar') }}">Adicionar voo</a>
           <a href="{{ route('admin.voos.listar') }}">Listar voos</a>
         </div>
       </div>

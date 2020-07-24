@@ -80,5 +80,15 @@ Route::group(['middleware' => ['auth']],
             'as' => 'admin.voos.listar',
             'uses' => 'Admin\AdminController@listar'
         ]);
+
+        Route::get('/admin/voos/adicionar', [
+            'as' => 'admin.voos.adicionar',
+            'uses' => 'Admin\AdminController@adicionar'
+        ]);
+
+        Route::post('/admin/voos/adicionar', [
+            'as' => 'admin.voos.adicionar',
+            'uses' => 'Admin\AdminController@atualizar'
+        ]);
     }
 );

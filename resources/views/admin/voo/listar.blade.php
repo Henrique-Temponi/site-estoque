@@ -5,9 +5,10 @@
 <div class="row">
 
     <h3>Voos disponiveis</h3>
-    <a class="btn" href="#">Adicionar voo</a>
+    <a class="btn" href="{{ route('admin.voos.adicionar') }}">Adicionar voo</a>
 
 </div>
+
 
 <div class="divider"></div>
 
