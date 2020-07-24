@@ -59,6 +59,8 @@ class AdminController extends Controller
     {
         $voos = Flight::all();
 
+        // dd($voos[0]->user()->count());
+
         return view('admin.voo.listar')->with('voos', $voos);
     }
     
@@ -73,6 +75,26 @@ class AdminController extends Controller
 
         $request->session()->flash('msg', [
             'mensagem' => 'Voo Adicionado com sucesso',
+            'class' => 'green'
+        ]);
+        
+
+        return redirect()->route('admin.voos.listar');
+    }
+    
+    public function editar($id)
+    {
+        $voo = Flight::find($id);
+
+        return view('admin.voo.editar')->with('voo', $voo);
+    }
+
+    public function salvar(RequestVoo $request, $id)
+    {
+        Flight::find($id)->update($request->all());
+
+        $request->session()->flash('msg', [
+            'mensagem' => 'Voo editado com sucesso',
             'class' => 'green'
         ]);
 

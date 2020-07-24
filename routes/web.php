@@ -66,11 +66,6 @@ Route::group(['middleware' => ['auth']],
             'uses' => 'Usuario\VooController@index'
         ]);
 
-        Route::get('/usuario/voos', [
-            'as' => 'usuario.voos',
-            'uses' => 'Usuario\VooController@index'
-        ]);
-
         Route::get('/admin', [
             'as' => 'admin.index',
             'uses' => 'Admin\AdminController@index'
@@ -89,6 +84,16 @@ Route::group(['middleware' => ['auth']],
         Route::post('/admin/voos/adicionar', [
             'as' => 'admin.voos.adicionar',
             'uses' => 'Admin\AdminController@atualizar'
+        ]);
+
+        Route::get('/admin/voos/editar/{id}', [
+            'as' => 'admin.voos.editar',
+            'uses' => 'Admin\AdminController@editar'
+        ]);
+
+        Route::post('/admin/voos/editar/{id}', [
+            'as' => 'admin.voos.editar',
+            'uses' => 'Admin\AdminController@salvar'
         ]);
     }
 );

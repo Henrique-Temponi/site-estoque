@@ -10,8 +10,8 @@
         <div class="col s12 m6">
             <div class="card indigo">
                 <div class="card-content white-text">
-                <span class="card-title">{{ $p->voo }}</span>
-                    <p>{{ $p->destino}}</p>
+                <span class="card-title">Nome do voo: {{ $p->voo }}</span>
+                    <p>Nome do destino: {{ $p->destino}}</p>
                 </div>
                 <div class="card-action">
                     <a href="{{ route('usuario.reservar', $p->id) }}">Reserva</a>
