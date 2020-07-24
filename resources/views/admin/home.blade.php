@@ -38,8 +38,8 @@
           <p>Numero de Compahia cadastradas: {{ $compahia_quantidades }}</p>
         </div>
         <div class="card-action">
-          <a href="#">Cadastrar compahia</a>
-          <a href="#">Listar compahias</a>
+          <a href="{{ route('admin.destinos.adicionar') }}">Cadastrar compahia</a>
+          <a href="{{ route('admin.destinos.listar') }}">Listar compahias</a>
         </div>
       </div>
     </div>
@@ -51,8 +51,8 @@
           <p>Numero de destinos cadastrados: {{ $destino_quantidades }}</p>
         </div>
         <div class="card-action">
-          <a href="#">Cadastrar destino</a>
-          <a href="#">Listar destinos</a>
+          <a href="{{ route('admin.destinos.adicionar') }}">Cadastrar Destino</a>
+          <a href="{{ route('admin.destinos.listar') }}">Listar destinos</a>
         </div>
       </div>
     </div>

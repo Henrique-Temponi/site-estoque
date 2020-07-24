@@ -102,6 +102,7 @@ Route::group(['middleware' => ['auth']],
         ]);
 
 
+        //ROTA DE USUARIOS
         Route::get('/admin/usuarios/listar', [
             'as' => 'admin.usuarios.listar',
             'uses' => 'Admin\UserController@listar'
@@ -110,6 +111,37 @@ Route::group(['middleware' => ['auth']],
         Route::get('/admin/usuarios/deletar/{id}', [
             'as' => 'admin.usuarios.deletar',
             'uses' => 'Admin\UserController@deletar'
+        ]);
+
+        //ROTA DE DESTINOS
+        Route::get('/admin/destinos/listar', [
+            'as' => 'admin.destinos.listar',
+            'uses' => 'Admin\DestinoController@listar'
+        ]);
+
+        Route::get('/admin/destinos/adicionar', [
+            'as' => 'admin.destinos.adicionar',
+            'uses' => 'Admin\DestinoController@adicionar'
+        ]);
+
+        Route::post('/admin/destinos/adicionar', [
+            'as' => 'admin.destinos.adicionar',
+            'uses' => 'Admin\DestinoController@atualizar'
+        ]);
+
+        Route::get('/admin/destinos/editar/{id}', [
+            'as' => 'admin.destinos.editar',
+            'uses' => 'Admin\DestinoController@editar'
+        ]);
+
+        Route::post('/admin/destinos/editar/{id}', [
+            'as' => 'admin.destinos.editar',
+            'uses' => 'Admin\DestinoController@salvar'
+        ]);
+
+        Route::get('/admin/destinos/deletar/{id}', [
+            'as' => 'admin.destinos.deletar',
+            'uses' => 'Admin\DestinoController@deletar'
         ]);
     }
 );
