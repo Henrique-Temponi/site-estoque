@@ -11,7 +11,7 @@
         </div>
         <div class="card-action">
           <a href="#">Adicionar voo</a>
-          <a href="#">Listar voos</a>
+          <a href="{{ route('admin.voos.listar') }}">Listar voos</a>
         </div>
       </div>
     </div>

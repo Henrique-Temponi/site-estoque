@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Flight;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,4 +50,12 @@ class AdminController extends Controller
     {
         return view('admin.home');
     }
+
+    public function listar()
+    {
+        $voos = Flight::all();
+
+        return view('admin.voo.listar')->with('voos', $voos);
+    }
+    
 }
