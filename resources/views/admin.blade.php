@@ -14,7 +14,7 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
 
-                    <li><a target="_blanck" href="{{ route('site.home') }}">Site</a></li>
+                    <li><a target="_blank" href="{{ route('site.home') }}">Site</a></li>
                     
                     @if(Auth::guest())
                         <li><a href="{{ route('site.home') }}">Todos os voos</a></li>
