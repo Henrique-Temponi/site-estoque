@@ -61,16 +61,26 @@ class RouteTest extends TestCase
             ->assertRedirect('/login');
     }
 
-    // /** @test */
-    // public function Test_with_actingAs()
-    // {
-    //     $this->actingAs(factory(User::class)->create());
+    /** @test */
+    public function Test_with_actingAs()
+    {
+        // $this->actingAs(factory(User::class)->create());
 
-    //     // dd(factory(User::class)->create());
+        $this->withoutExceptionHandling();
 
-    //     $response = $this->get('/usuario/voos')
-    //         ->assertOk();
-    // }
+        $user = factory(User::class)->create();
+
+        // dd($user);
+
+        // $response = $this->actingAs(factory(User::class)->create())->get('/usuario/voos')->assertOk();
+        $response = $this->actingAs($user)->get('/usuario/voos'); 
+        $response->assertOk();
+
+        // dd(factory(User::class)->create());
+
+        // $response = $this->get('/usuario/voos')
+        //     ->assertOk();
+    }
 
     
 }
