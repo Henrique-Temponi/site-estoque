@@ -10,7 +10,6 @@ use App\Http\Requests\Voo as RequestVoo;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller

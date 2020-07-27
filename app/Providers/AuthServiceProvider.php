@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin-painel', function($user){
             return $user->admin
                 ? Response::allow()
-                : Response::deny(' Usuario não tem autenticação para assesar a rota');
+                : Response::deny('Usuario não tem autenticação para assesar a rota', 403);
         });
     }
 }

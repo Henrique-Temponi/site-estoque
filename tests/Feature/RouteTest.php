@@ -22,13 +22,13 @@ class RouteTest extends TestCase
     public function User_routes()
     {
         $response = $this->get('/');
-        $response->assertStatus(200);
+        $response->assertOk();
 
         $response = $this->get('/login');
-        $response->assertStatus(200);
+        $response->assertOk();
 
         $response = $this->get('/registrar');
-        $response->assertStatus(200);
+        $response->assertOk();
 
         
     }
@@ -45,15 +45,6 @@ class RouteTest extends TestCase
         $response->assertStatus(302);
     }
 
-    /**
-     * @test
-     */
-    public function Authtoziation_routes()
-    {
-        $response = $this->get('/admin');
-        $response->assertStatus(302);
-    }
-
     /** @test */
     public function Test_with_assertRedirect()
     {
@@ -67,13 +58,11 @@ class RouteTest extends TestCase
         // $this->actingAs(factory(User::class)->create());
 
         $this->withoutExceptionHandling();
-
-        $user = factory(User::class)->create();
-
+        $this->actingAsUser();
         // dd($user);
 
         // $response = $this->actingAs(factory(User::class)->create())->get('/usuario/voos')->assertOk();
-        $response = $this->actingAs($user)->get('/usuario/voos'); 
+        $response = $this->get('/usuario/voos'); 
         $response->assertOk();
 
         // dd(factory(User::class)->create());
@@ -82,5 +71,33 @@ class RouteTest extends TestCase
         //     ->assertOk();
     }
 
+    /** @test */
+    public function Redirect_if_user_does_not_have_access_rights_panel()
+    {
+
+        // $this->withoutExceptionHandling();
+
+        $this->actingAsUser();
+
+        $response = $this->get('/admin');
+        $response->assertForbidden();
+
+        $response = $this->get('/admin/voos/listar');
+        $response->assertForbidden();
+
+        $response = $this->get('/admin/usuarios/listar');
+        $response->assertForbidden();
+
+        $response = $this->get('/admin/destinos/listar');
+        $response->assertForbidden();
+
+        $response = $this->get('/admin/compahias/listar');
+        $response->assertForbidden();
+    }
+
+    public function actingAsUser()
+    {
+        $this->actingAs(factory(User::class)->create());
+    }
     
 }
