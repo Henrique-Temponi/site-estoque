@@ -95,9 +95,45 @@ class RouteTest extends TestCase
         $response->assertForbidden();
     }
 
+    /** @test */
+    public function Test_admin_use()
+    {
+        $this->actingAsAdmin();
+
+        $response = $this->get('/admin');
+        $response->assertOk();
+    }
+
+    /** @test */
+    public function Admin_routes()
+    {
+        $this->actingAsAdmin();
+
+        $response = $this->get('/admin');
+        $response->assertOk();
+
+        $response = $this->get('/admin/voos/listar');
+        $response->assertOk();
+
+        $response = $this->get('/admin/usuarios/listar');
+        $response->assertOk();
+
+        $response = $this->get('/admin/destinos/listar');
+        $response->assertOk();
+
+        $response = $this->get('/admin/compahias/listar');
+        $response->assertOk();
+    }
+
     public function actingAsUser()
     {
         $this->actingAs(factory(User::class)->create());
     }
     
+    public function actingAsAdmin()
+    {
+        $this->actingAs(factory(User::class)->create([
+            'admin' => TRUE,
+        ]));
+    }
 }
