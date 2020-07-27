@@ -66,6 +66,7 @@ class LoginController extends Controller
 
         $usuario = new User($request->except('password'));
         $usuario->password = bcrypt($request->password);
+        $usuario->admin = FALSE;
         $usuario->save();
 
         $request->session()->flash('msg', [

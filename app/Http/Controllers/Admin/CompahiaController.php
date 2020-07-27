@@ -6,12 +6,14 @@ use App\Compahia;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Compahia as RequestsCompahia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CompahiaController extends Controller
 {
     public function listar()
     {
+        $this->authorize('admin-painel', Auth::user());
         $registro = Compahia::all();
 
         return view('admin.compahia.listar')->with('registro', $registro);
@@ -19,6 +21,7 @@ class CompahiaController extends Controller
     
     public function adicionar()
     {
+        $this->authorize('admin-painel', Auth::user());
         return view('admin.compahia.adicionar');
     }
 
@@ -26,6 +29,7 @@ class CompahiaController extends Controller
     {
 
         // dd($request);
+        $this->authorize('admin-painel', Auth::user());
 
         Compahia::create($request->all())->save();
 
@@ -40,6 +44,7 @@ class CompahiaController extends Controller
     
     public function editar($id)
     {
+        $this->authorize('admin-painel', Auth::user());
         $registro = Compahia::find($id);
 
         return view('admin.compahia.editar')->with('registro', $registro);
@@ -47,6 +52,7 @@ class CompahiaController extends Controller
 
     public function salvar(RequestsCompahia $request, $id)
     {
+        $this->authorize('admin-painel', Auth::user());
         Compahia::find($id)->update($request->all());
 
         $request->session()->flash('msg', [
@@ -59,6 +65,7 @@ class CompahiaController extends Controller
 
     public function deletar($id)
     {
+        $this->authorize('admin-painel', Auth::user());
         Compahia::find($id)->delete();
 
         Session::flash('msg', [

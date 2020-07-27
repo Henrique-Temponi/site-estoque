@@ -17,11 +17,13 @@ class AdminController extends Controller
 {
     public function login()
     {
+        $this->authorize('admin-painel', Auth::user());
         return view('admin.login.index');
     }
 
     public function verificar (Request $request)
     {   
+        $this->authorize('admin-painel', Auth::user());
         // dd($request);
         $credenciais = $request->only('email', 'password');
         // dd($credenciais);
@@ -47,6 +49,7 @@ class AdminController extends Controller
 
     public function logout ()
     {
+        $this->authorize('admin-painel', Auth::user());
         Auth::logout();
         
         return redirect()->route('site.home');
@@ -55,9 +58,12 @@ class AdminController extends Controller
     public function index()
     {
 
-        $response = Gate::inspect('admin-painel', Auth::user());
 
-        if ($response->allowed()) {
+        $this->authorize('admin-painel', Auth::user());
+
+        // $response = Gate::inspect('admin-painel', Auth::user());
+
+        // if ($response->allowed()) {
 
             $voos_quantidades = Flight::all()->count();
             $user_quantidades = User::all()->count();
@@ -69,20 +75,21 @@ class AdminController extends Controller
                 ->with('user_quantidade', $user_quantidades)
                 ->with('destino_quantidades', $destino_quantidades)
                 ->with('compahia_quantidades', $compahia_quantidades);
-        }  
-        else {
+        // }  
+        // else {
 
-            Session::flash('msg', [
-                'mensagem' => $response->message(),
-                'class' => 'blue'
-            ]);
+            // Session::flash('msg', [
+            //     'mensagem' => $response->message(),
+            //     'class' => 'blue'
+            // ]);
 
             return redirect()->route('site.home');
-        }
+        // }
     }
 
     public function listar()
     {
+        $this->authorize('admin-painel', Auth::user());
         $voos = Flight::all();
 
         // dd($voos[0]->user()->count());
@@ -92,6 +99,7 @@ class AdminController extends Controller
     
     public function adicionar()
     {
+        $this->authorize('admin-painel', Auth::user());
         $compahia = Compahia::all();
         $destino = Destino::all();
 
@@ -102,7 +110,7 @@ class AdminController extends Controller
 
     public function atualizar(RequestVoo $request)
     {
-
+        $this->authorize('admin-painel', Auth::user());
         // dd($request);
 
         Flight::create($request->all())->save();
@@ -118,6 +126,7 @@ class AdminController extends Controller
     
     public function editar($id)
     {
+        $this->authorize('admin-painel', Auth::user());
         $voo = Flight::find($id);
         $destino = Destino::all();
         $compahia = Compahia::all();
@@ -129,6 +138,7 @@ class AdminController extends Controller
 
     public function salvar(RequestVoo $request, $id)
     {
+        $this->authorize('admin-painel', Auth::user());
         Flight::find($id)->update($request->all());
 
         $request->session()->flash('msg', [
@@ -141,6 +151,7 @@ class AdminController extends Controller
 
     public function deletar($id)
     {
+        $this->authorize('admin-painel', Auth::user());
         Flight::find($id)->delete();
 
         Session::flash('msg', [

@@ -6,12 +6,14 @@ use App\Destino;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Destino as RequestsDestino;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class DestinoController extends Controller
 {
     public function listar()
     {
+        $this->authorize('admin-painel', Auth::user());
         $registro = Destino::all();
 
         return view('admin.destino.listar')->with('registro', $registro);
@@ -19,6 +21,7 @@ class DestinoController extends Controller
     
     public function adicionar()
     {
+        $this->authorize('admin-painel', Auth::user());
         return view('admin.destino.adicionar');
     }
 
@@ -26,6 +29,7 @@ class DestinoController extends Controller
     {
 
         // dd($request);
+        $this->authorize('admin-painel', Auth::user());
 
         Destino::create($request->all())->save();
 
@@ -40,6 +44,7 @@ class DestinoController extends Controller
     
     public function editar($id)
     {
+        $this->authorize('admin-painel', Auth::user());
         $registro = Destino::find($id);
 
         return view('admin.destino.editar')->with('registro', $registro);
@@ -47,6 +52,7 @@ class DestinoController extends Controller
 
     public function salvar(RequestsDestino $request, $id)
     {
+        $this->authorize('admin-painel', Auth::user());
         Destino::find($id)->update($request->all());
 
         $request->session()->flash('msg', [
@@ -59,6 +65,7 @@ class DestinoController extends Controller
 
     public function deletar($id)
     {
+        $this->authorize('admin-painel', Auth::user());
         Destino::find($id)->delete();
 
         Session::flash('msg', [
