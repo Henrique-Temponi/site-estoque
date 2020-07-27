@@ -125,6 +125,37 @@ class RouteTest extends TestCase
         $response->assertOk();
     }
 
+    /** @test */
+    public function Create_new_user()
+    {
+        
+
+        $response = $this->post('/registrar', $this->newUserData());
+
+        $response->assertRedirect('/login');
+        // $response->assertSessionHas('msg');
+    }
+
+    /** @test */
+    public function Create_new_user_with_invalid_name()
+    {
+        
+        $response = $this->post('/registrar', array_merge($this->newUserData(), [ 'name' => '']));
+
+        $response->assertSessionHasErrors('name');
+    }
+
+    /** @test */
+    public function Create_new_user_with_invalid_password()
+    {
+        
+        $response = $this->post('/registrar', array_merge($this->newUserData(), [ 'password' => '']));
+
+        $response->assertSessionHasErrors('password');
+    }
+
+
+
     public function actingAsUser()
     {
         $this->actingAs(factory(User::class)->create());
@@ -135,5 +166,14 @@ class RouteTest extends TestCase
         $this->actingAs(factory(User::class)->create([
             'admin' => TRUE,
         ]));
+    }
+
+    private function newUserData()
+    {
+        return  [
+            'name' => 'Ronaldinho soccer 64',
+            'email' => 'Ronaldo@dev.com',
+            'password' => '123',
+        ];
     }
 }
