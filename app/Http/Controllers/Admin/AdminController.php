@@ -10,6 +10,7 @@ use App\Http\Requests\Voo as RequestVoo;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
@@ -53,17 +54,31 @@ class AdminController extends Controller
 
     public function index()
     {
-        $voos_quantidades = Flight::all()->count();
-        $user_quantidades = User::all()->count();
-        $destino_quantidades = Destino::all()->count();
-        $compahia_quantidades = Compahia::all()->count();
 
-        return view('admin.home')
-            ->with('voos_quantidade', $voos_quantidades)
-            ->with('user_quantidade', $user_quantidades)
-            ->with('destino_quantidades', $destino_quantidades)
-            ->with('compahia_quantidades', $compahia_quantidades);
-            
+        $response = Gate::inspect('admin-painel', Auth::user());
+
+        if ($response->allowed()) {
+
+            $voos_quantidades = Flight::all()->count();
+            $user_quantidades = User::all()->count();
+            $destino_quantidades = Destino::all()->count();
+            $compahia_quantidades = Compahia::all()->count();
+    
+            return view('admin.home')
+                ->with('voos_quantidade', $voos_quantidades)
+                ->with('user_quantidade', $user_quantidades)
+                ->with('destino_quantidades', $destino_quantidades)
+                ->with('compahia_quantidades', $compahia_quantidades);
+        }  
+        else {
+
+            Session::flash('msg', [
+                'mensagem' => $response->message(),
+                'class' => 'blue'
+            ]);
+
+            return redirect()->route('site.home');
+        }
     }
 
     public function listar()

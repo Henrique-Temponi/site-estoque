@@ -23,11 +23,13 @@ class UsersSeeder extends Seeder
                 'name'  => 'dev',
                 'email' => 'dev@dev.com',
                 'password' => bcrypt('dev'),
+                'admin' => TRUE,
             ],
             [
                 'name'  => 'dev2',
                 'email' => 'dev2@dev.com',
                 'password' => bcrypt('dev2'),
+                'admin' => FALSE,
             ]
         ]);
     }
