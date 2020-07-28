@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Destino;
+use App\Flight;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -105,7 +107,7 @@ class RouteTest extends TestCase
     }
 
     /** @test */
-    public function Admin_routes()
+    public function Admin_routes_acting_as_admin()
     {
         $this->actingAsAdmin();
 
@@ -133,20 +135,19 @@ class RouteTest extends TestCase
         $response = $this->post('/registrar', $this->newUserData());
 
         $response->assertRedirect('/login');
-        // $response->assertSessionHas('msg');
+        $response->assertSessionHas('msg');
     }
 
     /** @test */
-    public function Create_new_user_with_invalid_name()
+    public function new_user_with_invalid_name()
     {
-        
         $response = $this->post('/registrar', array_merge($this->newUserData(), [ 'name' => '']));
 
         $response->assertSessionHasErrors('name');
     }
 
     /** @test */
-    public function Create_new_user_with_invalid_password()
+    public function new_user_with_invalid_password()
     {
         
         $response = $this->post('/registrar', array_merge($this->newUserData(), [ 'password' => '']));
@@ -154,6 +155,58 @@ class RouteTest extends TestCase
         $response->assertSessionHasErrors('password');
     }
 
+
+    /** @test */
+    public function Create_destino_through_form()
+    {
+        
+        $this->actingAsAdmin();
+
+        $response = $this->post('/admin/destinos/adicionar', $this->newDestinoData());
+
+        $response->assertSessionHasNoErrors();
+        $response->assertRedirect('/admin/destinos/listar');
+        
+    }
+
+    /** @test */
+    public function edit_destino()
+    {
+        $this->actingAsAdmin();
+
+        $this->post('/admin/destinos/adicionar', $this->newDestinoData());
+
+        $response = $this->post('/admin/destinos/editar/1', $this->newDestinoData());
+
+        $response->assertSessionHasNoErrors();
+        $response->assertRedirect('/admin/destinos/listar');
+    }
+
+    /** @test */
+    public function edit_destino_with_invalid_name()
+    {
+        $this->actingAsAdmin();
+
+        $this->post('/admin/destinos/adicionar', $this->newDestinoData());
+
+        $response = $this->post('/admin/destinos/editar/1', array_merge($this->newDestinoData(), [ 'nome' => '' ]));
+
+        $response->assertSessionHasErrors('nome');
+    }
+
+
+    /** @test */
+    public function delete_destino()
+    {
+        $this->actingAsAdmin();
+
+        $this->post('/admin/destinos/adicionar', $this->newDestinoData());
+
+        $response = $this->get('/admin/destinos/deletar/1');
+
+        $response->assertSessionHasNoErrors();
+        $response->assertRedirect('/admin/destinos/listar');
+    }
 
 
     public function actingAsUser()
@@ -174,6 +227,14 @@ class RouteTest extends TestCase
             'name' => 'Ronaldinho soccer 64',
             'email' => 'Ronaldo@dev.com',
             'password' => '123',
+        ];
+    }
+
+    private function newDestinoData()
+    {
+        return  [
+            'nome' => 'Belo Horizonte',
+            'abreviacao' => 'RF',
         ];
     }
 }
