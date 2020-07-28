@@ -208,6 +208,56 @@ class RouteTest extends TestCase
         $response->assertRedirect('/admin/destinos/listar');
     }
 
+    /** @test */
+    public function Create_compahia_through_form()
+    {
+        
+        $this->actingAsAdmin();
+
+        $response = $this->post('/admin/compahias/adicionar', $this->newCompahiaData());
+
+        $response->assertSessionHasNoErrors();
+        $response->assertRedirect('/admin/compahias/listar');
+        
+    }
+
+    /** @test */
+    public function edit_compahia()
+    {
+        $this->actingAsAdmin();
+
+        $this->post('/admin/compahias/adicionar', $this->newCompahiaData());
+
+        $response = $this->post('/admin/compahias/editar/1', $this->newCompahiaData());
+
+        $response->assertSessionHasNoErrors();
+        $response->assertRedirect('/admin/compahias/listar');
+    }
+
+    /** @test */
+    public function edit_compahia_with_invalid_name()
+    {
+        $this->actingAsAdmin();
+
+        $this->post('/admin/compahias/adicionar', $this->newCompahiaData());
+
+        $response = $this->post('/admin/compahias/editar/1', array_merge($this->newCompahiaData(), [ 'nome' => '' ]));
+
+        $response->assertSessionHasErrors('nome');
+    }
+
+    /** @test */
+    public function delete_compahia()
+    {
+        $this->actingAsAdmin();
+
+        $this->post('/admin/compahias/adicionar', $this->newCompahiaData());
+
+        $response = $this->get('/admin/compahias/deletar/1');
+
+        $response->assertSessionHasNoErrors();
+        $response->assertRedirect('/admin/compahias/listar');
+    }
 
     public function actingAsUser()
     {
@@ -235,6 +285,13 @@ class RouteTest extends TestCase
         return  [
             'nome' => 'Belo Horizonte',
             'abreviacao' => 'RF',
+        ];
+    }
+
+    private function newCompahiaData()
+    {
+        return  [
+            'nome' => 'JDOE',
         ];
     }
 }
