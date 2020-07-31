@@ -12,7 +12,9 @@
     <!-- form start -->
     <form class="form-horizontal" action="{{ route('site.login') }}" method="POST">
         {{ csrf_field() }}
-        @include('web.login._form')
+        <div class="card-body">
+            @include('web.login._form')
+        </div>
 
         <div class="card-footer">
             <button type="submit" class="btn btn-info bg-blue">Fazer login</button>
