@@ -25,13 +25,15 @@
             <tr>
                 <td>{{ $r->nome }}</td>
                 <td>{{ $r->flight()->count()}}</td>
-                @if($r->flight()->count())
+                <td><a class="btn green" href="{{ route('admin.compahias.editar', $r->id) }}">Editar</a></td>
+                <td><a class="btn red" href="{{ route('admin.compahias.deletar', $r->id) }}">Deletar</a></td>
+                <!-- @if($r->flight()->count())
                     <td><a class="btn green disabled" href="#">Editar</a></td>
                     <td><a class="btn red disabled" href="#">Deletar</a></td>
-                @else
-                    <td><a class="btn green" href="{{ route('admin.compahias.editar', $r->id) }}">Editar</a></td>
-                    <td><a class="btn red" href="{{ route('admin.compahias.deletar', $r->id) }}">Deletar</a></td>
-                @endif
+                @else -->
+                    <!-- <td><a class="btn green" href="{{ route('admin.compahias.editar', $r->id) }}">Editar</a></td>
+                    <td><a class="btn red" href="{{ route('admin.compahias.deletar', $r->id) }}">Deletar</a></td> -->
+                <!-- @endif -->
             </tr>
             @endforeach
         </tbody>
