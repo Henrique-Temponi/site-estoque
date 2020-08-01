@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Compahia;
 use App\Destino;
 use App\Flight;
 use App\User;
@@ -23,6 +24,8 @@ class RouteTest extends TestCase
      */
     public function User_routes()
     {
+
+        // $this->withoutExceptionHandling();
         $response = $this->get('/');
         $response->assertOk();
 
@@ -257,6 +260,20 @@ class RouteTest extends TestCase
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect('/admin/compahias/listar');
+    }
+
+    /** @test */
+    public function Test_flight()
+    {
+        $d = factory(Destino::class)->create();
+        $c = factory(Compahia::class)->create();
+        $f = factory(Flight::class)->make();
+
+        // dd($d,$c,$f);
+
+        $response = $this->get('/usuario/reservar/10000');
+        // $response->assertSessionHasNoErrors();
+
     }
 
     public function actingAsUser()
