@@ -69,7 +69,7 @@ class DestinoController extends Controller
         Destino::find($id)->delete();
 
         Session::flash('msg', [
-            'mensagem' => 'Voo deletado com sucesso',
+            'mensagem' => 'Destino deletado com sucesso',
             'class' => 'green'
         ]);
 
