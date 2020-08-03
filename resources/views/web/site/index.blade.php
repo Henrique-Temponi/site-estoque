@@ -15,7 +15,7 @@
                     Destino: {{ $p->destino->nome }} <br>
                     Abreviação: {{ $p->destino->abreviacao }}
                 </p>
-                <a href="#" class="card-link">Reservar</a>
+                <a href="{{ route('usuario.reservar', $p->id ) }}" class="card-link">Reservar</a>
                 </div>
             </div>
         </div>

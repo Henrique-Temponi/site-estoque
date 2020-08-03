@@ -23,6 +23,9 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" href="#">Bem vindo, {{Auth::user()->name}}</a>
         </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" href="{{ route('site.home') }}">Todos os voos</a>
+        </li>
         @if(Auth::user()->admin)
             <li class="nav-item d-none d-sm-inline-block">
                 <a class="nav-link" href="{{ route('admin.index') }}">Painel admin</a>
