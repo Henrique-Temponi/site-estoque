@@ -12,8 +12,8 @@
     <div class="wrapper">
         @include('layout._navAdmin')        
         @include('layout._asideAdmin')
-        <div class="content-wrapper" style="min-height: 120.5px;">
-            
+
+        <div class="content-wrapper" style="min-height: 120.5px;">    
             @yield('conteudo')
         </div>
         

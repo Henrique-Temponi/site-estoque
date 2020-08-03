@@ -2,20 +2,28 @@
 
 @section('conteudo')
 
-<div class="row">
-    <div class="col s12 m6">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Voos disponiveis</span>
-          <p>Numero total de voos: {{ $voos_quantidade }}</p>
-        </div>
-        <div class="card-action">
-          <a href="{{ route('admin.voos.adicionar') }}">Adicionar voo</a>
-          <a href="{{ route('admin.voos.listar') }}">Listar voos</a>
-        </div>
+<div class="content-header">
+
+
+</div>
+
+<div class="content">
+
+  <div class="col-lg-6">
+      <div class="card card-primary card-outline">
+          <div class="card-body">
+            <h5 class="card-title">Voos disponiveis</h5>
+            <p class="card-text">
+                Numero Total de voos: {{ $voos_quantidade }}
+            </p>
+            <a href="{{ route('admin.voos.adicionar') }}" class="card-link">Adicionar Voo</a>
+            <a href="{{ route('admin.voos.listar') }}" class="card-link">Listar Voos</a>
+          </div>
       </div>
-    </div>
-  <!-- </div> -->
+  </div>
+
+</div>
+
 
   <!-- <div class="row"> -->
     <div class="col s12 m6">
