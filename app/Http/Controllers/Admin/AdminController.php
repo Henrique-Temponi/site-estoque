@@ -82,7 +82,7 @@ class AdminController extends Controller
             //     'class' => 'blue'
             // ]);
 
-            return redirect()->route('site.home');
+            // return redirect()->route('site.home');
         // }
     }
 
