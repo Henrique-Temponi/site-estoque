@@ -23,9 +23,10 @@ class VooController extends Controller
     public function reservar($id)
     {
 
+        $flights = Flight::all();
         $voo = User::find(Auth::id())->flight();
 
-        if(!$voo->find($id)){
+        if($flights->count() > 0 && (!$voo->find($id))){
 
             $voo->save(Flight::find($id));
 
@@ -43,6 +44,7 @@ class VooController extends Controller
                 'class' => 'red'
             ]);
 
+            // return redirect()->route('site.home');
             return redirect()->back();
         }
     }

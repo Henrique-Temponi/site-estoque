@@ -271,8 +271,12 @@ class RouteTest extends TestCase
 
         // dd($d,$c,$f);
 
-        $response = $this->get('/usuario/reservar/10000');
-        // $response->assertSessionHasNoErrors();
+        // $this->withoutExceptionHandling();
+
+        $this->actingAsUser();
+
+        $response = $this->get('/usuario/reservar/1');
+        $response->assertRedirect('/');
 
     }
 
