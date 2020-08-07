@@ -160,6 +160,41 @@ class RouteTest extends TestCase
 
 
     /** @test */
+    public function Test_flight()
+    {
+        $d = factory(Destino::class)->create();
+        $c = factory(Compahia::class)->create();
+        $f = factory(Flight::class)->make();
+
+        // dd($d,$c,$f);
+
+        // $this->withoutExceptionHandling();
+
+        $this->actingAsUser();
+
+        $response = $this->get('/usuario/reservar/1');
+        $response->assertRedirect('/');
+
+        $this->get('/');
+        $response = $this->get('/usuario/reservar/2');
+        $response->assertRedirect('/');
+
+        $this->get('/');
+        $response = $this->get('/usuario/reservar/3');
+        $response->assertRedirect('/');
+
+        $f->save();
+
+        $response = $this->get('/usuario/reservar/1');
+        $response->assertRedirect('/usuario/voos');
+
+        $this->get('/');
+        $response = $this->get('/usuario/reservar/1');
+        $response->assertRedirect('/');
+    }
+
+
+    /** @test */
     public function Create_destino_through_form()
     {
         
@@ -262,39 +297,6 @@ class RouteTest extends TestCase
         $response->assertRedirect('/admin/compahias/listar');
     }
 
-    /** @test */
-    public function Test_flight()
-    {
-        $d = factory(Destino::class)->create();
-        $c = factory(Compahia::class)->create();
-        $f = factory(Flight::class)->make();
-
-        // dd($d,$c,$f);
-
-        // $this->withoutExceptionHandling();
-
-        $this->actingAsUser();
-
-        $response = $this->get('/usuario/reservar/1');
-        $response->assertRedirect('/');
-
-        $this->get('/');
-        $response = $this->get('/usuario/reservar/2');
-        $response->assertRedirect('/');
-
-        $this->get('/');
-        $response = $this->get('/usuario/reservar/3');
-        $response->assertRedirect('/');
-
-        $f->save();
-
-        $response = $this->get('/usuario/reservar/1');
-        $response->assertRedirect('/usuario/voos');
-
-        $this->get('/');
-        $response = $this->get('/usuario/reservar/1');
-        $response->assertRedirect('/');
-    }
 
     public function actingAsUser()
     {
