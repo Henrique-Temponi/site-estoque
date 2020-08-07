@@ -278,6 +278,22 @@ class RouteTest extends TestCase
         $response = $this->get('/usuario/reservar/1');
         $response->assertRedirect('/');
 
+        $this->get('/');
+        $response = $this->get('/usuario/reservar/2');
+        $response->assertRedirect('/');
+
+        $this->get('/');
+        $response = $this->get('/usuario/reservar/3');
+        $response->assertRedirect('/');
+
+        $f->save();
+
+        $response = $this->get('/usuario/reservar/1');
+        $response->assertRedirect('/usuario/voos');
+
+        $this->get('/');
+        $response = $this->get('/usuario/reservar/1');
+        $response->assertRedirect('/');
     }
 
     public function actingAsUser()
