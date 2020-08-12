@@ -67,7 +67,19 @@ class DestinoController extends Controller
     {
         $this->authorize('admin-painel', Auth::user());
         
-        Destino::find($id)->delete();
+        $destino = Destino::find($id);
+
+        $destinoFlights = $destino->flight;
+
+        foreach ($destinoFlights as $flight) {
+            
+            if($flight->user != null) {
+                $flight->user()->detach();
+                // dd($flight->user);
+            }
+        }
+
+        $destino->delete();
 
         Session::flash('msg', [
             'mensagem' => 'Destino deletado com sucesso',

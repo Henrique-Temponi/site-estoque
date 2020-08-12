@@ -34,7 +34,7 @@ class CompahiaController extends Controller
         Compahia::create($request->all())->save();
 
         $request->session()->flash('msg', [
-            'mensagem' => 'Destino Adicionado com sucesso',
+            'mensagem' => 'compahia Adicionado com sucesso',
             'class' => 'green'
         ]);
         
@@ -66,7 +66,20 @@ class CompahiaController extends Controller
     public function deletar($id)
     {
         $this->authorize('admin-painel', Auth::user());
-        Compahia::find($id)->delete();
+
+        $compahia = Compahia::find($id);
+
+        $compahiaFlights = $compahia->flight;
+
+        foreach ($compahiaFlights as $flight) {
+            
+            if($flight->user != null) {
+                $flight->user()->detach();
+                // dd($flight->user);
+            }
+        }
+
+        $compahia->delete();
 
         Session::flash('msg', [
             'mensagem' => 'Voo deletado com sucesso',
