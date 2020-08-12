@@ -297,6 +297,21 @@ class RouteTest extends TestCase
         $response->assertRedirect('/admin/compahias/listar');
     }
 
+    /** @test */
+    public function add_flight()
+    {
+
+        factory(Destino::class)->create();
+        factory(Compahia::class)->create();
+
+        $this->actingAsAdmin();
+
+        $response = $this->post('/admin/voos/adicionar', $this->newFlightData());
+
+        $response->assertSessionHasNoErrors();
+        $response->assertRedirect('/admin/voos/listar');
+    }
+
 
     public function actingAsUser()
     {
@@ -333,4 +348,14 @@ class RouteTest extends TestCase
             'nome' => 'JDOE',
         ];
     }
+
+    private function newFlightData()
+    {
+        return [
+            'voo' => 'HFJD',
+            'destino_id' => 1,
+            'compahia_id' => 1,
+        ];
+    }
+    
 }

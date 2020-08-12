@@ -18,6 +18,7 @@ class CreateFlights extends Migration
             $table->string('voo');
             $table->foreignId('destino_id')->constrained()->onDelete('cascade');
             $table->foreignId('compahia_id')->constrained()->onDelete('cascade');
+            // $table->string('turno');
             $table->timestamps();
         });
 

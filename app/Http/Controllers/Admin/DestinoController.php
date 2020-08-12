@@ -66,6 +66,7 @@ class DestinoController extends Controller
     public function deletar($id)
     {
         $this->authorize('admin-painel', Auth::user());
+        
         Destino::find($id)->delete();
 
         Session::flash('msg', [
