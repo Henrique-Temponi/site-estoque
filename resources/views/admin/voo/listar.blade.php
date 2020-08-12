@@ -19,6 +19,7 @@
             <th>Destino</th>
             <th>Compahia</th>
             <th>Numero de Reservas</th>
+            <th>Turno</th>
             <th>Opcões</th>
 
         </thead>
@@ -29,6 +30,7 @@
                 <td>{{ $voo->destino->nome }}</td>
                 <td>{{ $voo->compahia->nome }}</td>
                 <td>{{ $voo->user()->count()}}</td>
+                <td>{{ $voo->turno }}</td>
                 <td><a class="btn green" href="{{ route('admin.voos.editar', $voo->id) }}">Editar</a></td>
                 <td><a class="btn red" href="{{ route('admin.voos.deletar', $voo->id) }}">Deletar</a></td>
                 <!-- @if($voo->user()->count())

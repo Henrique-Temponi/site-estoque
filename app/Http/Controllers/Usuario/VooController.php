@@ -15,9 +15,16 @@ class VooController extends Controller
     {
         $voo = User::find(Auth::id())->flight;
 
-        // dd($voo);
+        $turno = [
+            1 => 'Manha',
+            2 => 'Tarde',
+            3 => 'Noite',
+        ];
 
-        return view('web.usuario.index')->with('voo', $voo);
+
+        return view('web.usuario.index')
+            ->with('voo', $voo)
+            ->with('turno', $turno);
     }
 
     public function reservar($id)
