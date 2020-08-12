@@ -27,27 +27,50 @@ class VooController extends Controller
             ->with('turno', $turno);
     }
 
+
+    /**
+     * LOOKUP
+     * https://laravel.com/docs/7.x/validation#custom-validation-rules
+     */
     public function reservar($id)
     {
 
         $flights = Flight::all();
-        $voo = User::find(Auth::id())->flight();
+        $user = User::find(Auth::id());
 
-        if($flights->count() > 0 && (!$voo->find($id))){
+        if ($flights->count() > 0 && $user->flight->find($id) == null){
+            
+            $x = array();
 
-            $voo->save(Flight::find($id));
+            foreach ($user->flight as $collectTurnos) {
+                $x[] = $collectTurnos->turno;
+            }
 
-            Session::flash('msg', [
-                'mensagem' =>  'Voo reservado com sucesso',
-                'class' => 'green'
-            ]);
+            if (!in_array($flights->find($id)->turno, $x)) {
 
-            return redirect()->route('usuario.voos');
+                $user->flight()->save(Flight::find($id));
+
+                Session::flash('msg', [
+                    'mensagem' =>  'Voo reservado com sucesso',
+                    'class' => 'green'
+                ]);
+
+                return redirect()->route('usuario.voos');
+            }
+            else {
+
+                Session::flash('msg', [
+                    'mensagem' =>  'Erro: Voo em um turno ja reservado',
+                    'class' => 'red'
+                ]);
+    
+                // return redirect()->route('site.home');
+                return redirect()->back();
+            }
         }
         else {
-            
             Session::flash('msg', [
-                'mensagem' =>  'Erro: Voo ja reservado',
+                'mensagem' =>  'Erro: Voo ja reservado, ou voo no turno ja reservado',
                 'class' => 'red'
             ]);
 
