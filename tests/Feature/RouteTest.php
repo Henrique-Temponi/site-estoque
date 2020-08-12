@@ -327,6 +327,21 @@ class RouteTest extends TestCase
         $response->assertRedirect('/');
     }
 
+    /** @test */
+    public function Add_flight_with_invalid_compahia_id()
+    {
+
+        $this->withoutExceptionHandling();
+        factory(Destino::class)->create();
+        // factory(Compahia::class)->create();
+
+        $this->actingAsAdmin();
+        $response = $this->post('/admin/voos/adicionar', $this->newFlightData());
+        
+
+        $response->assertRedirect('/');
+    }
+
 
     public function actingAsUser()
     {
