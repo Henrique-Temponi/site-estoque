@@ -26,6 +26,7 @@ class Voo extends FormRequest
         return [
             
             'voo' => ['required'],
+            'turno' => ['required', 'integer', 'between:1,3'],
         ];
     }
 
@@ -33,6 +34,8 @@ class Voo extends FormRequest
     {
         return [
             'required' => ':attribute não pode estar vazio.',
+            'integer' => ':attribute precisa ser um inteiro',
+            'between' => ':attribute precisa estar entre :min e :max',
         ];
     }
     
@@ -40,6 +43,7 @@ class Voo extends FormRequest
     {
         return [
             'voo' => 'O voo',
+            'turno' => 'O turno'
         ];
     }
 }

@@ -21,3 +21,12 @@
     </select>
     <label for="compahia">Compahia: </label>
 </div>
+
+<div class="input-field">
+    <select name="turno" id="turno">
+        <option value="1" {{ isset($voo->turno) && $voo->turno == 1 ? 'selected' : '' }}>Manha</option>
+        <option value="2" {{ isset($voo->turno) && $voo->turno == 2 ? 'selected' : '' }}>Tarde</option>
+        <option value="3" {{ isset($voo->turno) && $voo->turno == 3 ? 'selected' : '' }}>Noite</option>
+    </select>
+    <label for="turno">Turno: </label>
+</div>

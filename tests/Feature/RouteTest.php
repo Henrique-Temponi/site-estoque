@@ -297,6 +297,9 @@ class RouteTest extends TestCase
         $response->assertRedirect('/admin/compahias/listar');
     }
 
+
+
+
     /** @test */
     public function add_flight()
     {
@@ -341,6 +344,8 @@ class RouteTest extends TestCase
 
         $response->assertRedirect('/');
     }
+
+    
 
 
     public function actingAsUser()

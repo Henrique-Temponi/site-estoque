@@ -12,6 +12,14 @@ class HomeController extends Controller
     {
         $voo = Flight::all();
 
-        return view('web.site.index')->with('voo', $voo);
+        $turno = [
+            1 => 'Manha',
+            2 => 'Tarde',
+            3 => 'Noite',
+        ];
+
+        return view('web.site.index')
+            ->with('voo', $voo)
+            ->with('turno', $turno);
     }
 }
