@@ -390,6 +390,7 @@ class RouteTest extends TestCase
             'voo' => 'HFJD',
             'destino_id' => 1,
             'compahia_id' => 1,
+            'turno' => 1,
         ];
     }
     

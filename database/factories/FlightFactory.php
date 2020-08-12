@@ -12,5 +12,6 @@ $factory->define(Flight::class, function (Faker $faker) {
         'voo' => $faker->regexify('[A-Z]{5}'),
         'destino_id' => $faker->randomElement( Destino::all()->pluck('id')->toArray() ),
         'compahia_id' => $faker->randomElement( Compahia::all()->pluck('id')->toArray() ),
+        'turno' => $faker->numberBetween(1,3),
     ];
 });
