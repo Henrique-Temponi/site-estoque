@@ -112,7 +112,19 @@ class AdminController extends Controller
         $this->authorize('admin-painel', Auth::user());
         // dd($request);
 
-        Flight::create($request->all())->save();
+        $flight = new Flight();
+        $flight->voo = $request->input('voo');
+
+        // dd($flight);
+        if (Destino::find($request->input("destino_id")) == null) return redirect()->back();
+        if (Compahia::find($request->input("compahia_id")) == null ) return redirect()->back();
+
+        $flight->destino_id = $request->input("destino_id");
+        $flight->compahia_id = $request->input("compahia_id");
+
+        // dd($flight);
+
+        $flight->save();
 
         $request->session()->flash('msg', [
             'mensagem' => 'Voo Adicionado com sucesso',
