@@ -147,9 +147,6 @@ class AdminTest extends TestCase
         $response->assertRedirect('/admin/compahias/listar');
     }
 
-
-
-
     /** @test */
     public function add_flight()
     {
@@ -190,6 +187,18 @@ class AdminTest extends TestCase
         
 
         $response->assertRedirect('/');
+    }
+
+    /** @test */
+    public function add_view_contains_compahia_and_destino()
+    {
+        factory(Destino::class)->create();
+        factory(Compahia::class)->create();
+
+        $this->actingAsAdmin();
+
+        $response = $this->get('/admin/voos/adicionar');
+        $response->assertOk();
     }
 
     

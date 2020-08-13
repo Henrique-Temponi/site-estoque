@@ -14,45 +14,45 @@ use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
-    public function login()
-    {
-        $this->authorize('admin-painel', Auth::user());
-        return view('admin.login.index');
-    }
+    // public function login()
+    // {
+    //     // $this->authorize('admin-painel', Auth::user());
+    //     return view('admin.login.index');
+    // }
 
-    public function verificar (Request $request)
-    {   
-        $this->authorize('admin-painel', Auth::user());
-        // dd($request);
-        $credenciais = $request->only('email', 'password');
-        // dd($credenciais);
+    // public function verificar (Request $request)
+    // {   
+    //     // $this->authorize('admin-painel', Auth::user());
+    //     // dd($request);
+    //     $credenciais = $request->only('email', 'password');
+    //     // dd($credenciais);
         
-        if (Auth::attempt($credenciais)) {
+    //     if (Auth::attempt($credenciais)) {
             
-            $request->session()->flash('msg', [
-                'mensagem' =>  'Login feito com sucesso',
-                'class' => 'green'
-            ]);
+    //         $request->session()->flash('msg', [
+    //             'mensagem' =>  'Login feito com sucesso',
+    //             'class' => 'green'
+    //         ]);
 
-            return redirect()->route('admin.index');
-        }
+    //         return redirect()->route('admin.index');
+    //     }
 
         
-        $request->session()->flash('msg', [
-            'mensagem' =>  'Erro: Confira os dados',
-            'class' => 'red'
-        ]);
+    //     $request->session()->flash('msg', [
+    //         'mensagem' =>  'Erro: Confira os dados',
+    //         'class' => 'red'
+    //     ]);
 
-        return redirect()->route('admin.login.index');
-    }
+    //     return redirect()->route('admin.login.index');
+    // }
 
-    public function logout ()
-    {
-        $this->authorize('admin-painel', Auth::user());
-        Auth::logout();
+    // public function logout ()
+    // {
+    //     $this->authorize('admin-painel', Auth::user());
+    //     Auth::logout();
         
-        return redirect()->route('site.home');
-    }
+    //     return redirect()->route('site.home');
+    // }
 
     public function index()
     {

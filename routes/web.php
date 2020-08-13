@@ -76,6 +76,7 @@ Route::group(['middleware' => ['auth']],
             'uses' => 'Admin\AdminController@index'
         ]);
 
+        //ROTAS DE VOOS
         Route::get('/admin/voos/listar', [
             'as' => 'admin.voos.listar',
             'uses' => 'Admin\AdminController@listar'
