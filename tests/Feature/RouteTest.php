@@ -193,6 +193,28 @@ class RouteTest extends TestCase
         $response->assertRedirect('/');
     }
 
+    /** @test */
+    public function reserve_with_same_time_period()
+    {
+        factory(Destino::class)->create();
+        factory(Compahia::class)->create();
+        $f = factory(Flight::class, 2)->create([
+            'turno' => 1,
+        ]);
+
+        // dd($f);
+
+        $this->actingAsUser();
+
+
+        $response = $this->get('/usuario/reservar/1');
+        $response->assertRedirect('/usuario/voos');
+
+        $this->get('/');
+        $response = $this->get('/usuario/reservar/2');
+        $response->assertRedirect('/');
+    }
+
 
     /** @test */
     public function Create_destino_through_form()
@@ -319,14 +341,12 @@ class RouteTest extends TestCase
     public function Add_flight_with_invalid_destino_id()
     {
 
-        $this->withoutExceptionHandling();
         // factory(Destino::class)->create();
         factory(Compahia::class)->create();
 
         $this->actingAsAdmin();
         $response = $this->post('/admin/voos/adicionar', $this->newFlightData());
         
-
         $response->assertRedirect('/');
     }
 
@@ -334,7 +354,6 @@ class RouteTest extends TestCase
     public function Add_flight_with_invalid_compahia_id()
     {
 
-        $this->withoutExceptionHandling();
         factory(Destino::class)->create();
         // factory(Compahia::class)->create();
 
