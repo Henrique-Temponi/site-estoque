@@ -70,7 +70,7 @@ class VooController extends Controller
         }
         else {
             Session::flash('msg', [
-                'mensagem' =>  'Erro: Voo ja reservado, ou voo no turno ja reservado',
+                'mensagem' =>  'Erro: Voo ja reservado',
                 'class' => 'red'
             ]);
 
