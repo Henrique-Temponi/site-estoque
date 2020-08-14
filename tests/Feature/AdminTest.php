@@ -219,6 +219,10 @@ class AdminTest extends TestCase
         $response->assertSessionHas('msg');
         $response->assertRedirect('/admin/usuarios/listar');
 
+        $this->assertDeleted('users', [
+            'email' => $d->email,
+        ]);
+
     }
 
     
