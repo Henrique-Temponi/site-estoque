@@ -185,6 +185,20 @@ class UserTest extends TestCase
         $response->assertRedirect('/');
     }
 
+    /** @test */
+    public function login_with_existent_user()
+    {
+        $user = factory(User::class)->create();
+
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
+
+        $response->assertSessionHas('msg');
+        $response->assertRedirect('/');
+    }
+
     private function newUserData()
     {
         return  [
