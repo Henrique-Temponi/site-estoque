@@ -199,6 +199,24 @@ class UserTest extends TestCase
         $response->assertRedirect('/');
     }
 
+    /** @test */
+    public function logout_with_active_user()
+    {
+        $this->actingAsUser();
+
+        $response = $this->get('/logout');
+        $response->assertRedirect('/');
+
+    }
+
+    /** @test */
+    public function logout_without_active_user()
+    {
+        $this->get('/');
+        $response = $this->get('/logout');
+        $response->assertRedirect('/login');
+    }
+
     private function newUserData()
     {
         return  [
