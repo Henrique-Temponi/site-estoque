@@ -201,6 +201,26 @@ class AdminTest extends TestCase
         $response->assertOk();
     }
 
+    /** @test */
+    public function delete_user()
+    {
+        
+        $this->actingAsAdmin();
+
+        $d = factory(User::class)->create();
+
+        // dd($d);
+
+        $this->assertDatabaseHas('users',[
+            'email' => $d->email,
+        ]);
+
+        $response = $this->get('/admin/usuarios/deletar/2');
+        $response->assertSessionHas('msg');
+        $response->assertRedirect('/admin/usuarios/listar');
+
+    }
+
     
     public function actingAsAdmin()
     {

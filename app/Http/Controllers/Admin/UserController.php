@@ -19,12 +19,6 @@ class UserController extends Controller
 
         return view('admin.usuario.listar')->with('registros', $registros);
     }
-    
-    public function adicionar()
-    {
-        $this->authorize('admin-painel', Auth::user());
-        return view('admin.usuario.adicionar');
-    }
 
     public function deletar($id)
     {
