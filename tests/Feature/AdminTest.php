@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Compahia;
 use App\Destino;
+use App\Flight;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -222,6 +223,29 @@ class AdminTest extends TestCase
         $this->assertDeleted('users', [
             'email' => $d->email,
         ]);
+
+    }
+
+    /** @test */
+    public function check_flight_references()
+    {
+
+        // $this->withoutExceptionHandling();
+
+        factory(User::class)->create();
+        factory(Compahia::class)->create();
+        factory(Destino::class)->create();
+        factory(Flight::class, 2)->create();
+
+        $this->actingAsAdmin();
+
+        $response = $this->get('/usuario/reservar/1');
+        $response->assertRedirect('usuario/voos');
+
+        $this->assertSame(1, Flight::find(1)->user->count());
+
+        // $response = 
+
 
     }
 
