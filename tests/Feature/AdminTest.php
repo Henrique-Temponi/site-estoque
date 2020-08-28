@@ -243,10 +243,21 @@ class AdminTest extends TestCase
         $response->assertRedirect('usuario/voos');
 
         $this->assertSame(1, Flight::find(1)->user->count());
+        $this->assertNotNull(Flight::find(1)->compahia);
+    }
 
-        // $response = 
+    /** @test */
+    public function test_routes_with_data()
+    {
+        //Dar uma olhada depois para pegar dados da response
+        factory(Compahia::class)->create();
+        factory(Destino::class)->create();
+        factory(Flight::class, 2)->create();
 
+        $this->actingAsAdmin();
 
+        $response = $this->get('/admin/voos/editar/1');
+        $response->assertOk();
     }
 
     
