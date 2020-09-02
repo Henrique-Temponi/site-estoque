@@ -272,6 +272,9 @@ class AdminTest extends TestCase
 
         $response = $this->get('/admin/destinos/editar/30');
         $response->assertRedirect('/admin/destinos/adicionar');
+
+        $response = $this->get('/admin/destinos/editar/1');
+        $response->assertViewIs('admin.destino.editar');
     }
 
     /** @test */
@@ -305,6 +308,9 @@ class AdminTest extends TestCase
 
         $response = $this->get('/admin/compahias/editar/30');
         $response->assertRedirect('/admin/compahias/adicionar/');
+
+        $response = $this->get('/admin/compahias/editar/1');
+        $response->assertViewIs('admin.compahia.editar');
     }
 
     /** @test */
