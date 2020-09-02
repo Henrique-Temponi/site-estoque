@@ -210,6 +210,21 @@ class UserTest extends TestCase
     }
 
     /** @test */
+    public function delete_reserved_flight()
+    {
+        factory(Destino::class)->create();
+        factory(Compahia::class)->create();
+        factory(Flight::class)->create();
+
+        $this->actingAsUser();
+
+        $this->get('/usuario/reservar/1');
+
+        $response = $this->get('/usuario/reservar/deletar/1');
+        $response->assertRedirect('/usuario/voos');
+    }
+
+    /** @test */
     public function logout_without_active_user()
     {
         $this->get('/');
