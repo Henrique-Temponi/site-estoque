@@ -47,6 +47,8 @@ class DestinoController extends Controller
         $this->authorize('admin-painel', Auth::user());
         $registro = Destino::find($id);
 
+        if ($registro == null) return redirect()->back();
+
         return view('admin.destino.editar')->with('registro', $registro);
     }
 

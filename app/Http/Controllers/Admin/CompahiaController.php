@@ -47,6 +47,8 @@ class CompahiaController extends Controller
         $this->authorize('admin-painel', Auth::user());
         $registro = Compahia::find($id);
 
+        if ($registro == null) return redirect()->back();
+
         return view('admin.compahia.editar')->with('registro', $registro);
     }
 
