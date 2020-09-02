@@ -260,6 +260,38 @@ class AdminTest extends TestCase
         $response->assertOk();
     }
 
+    /** @test */
+    public function test_routes_with_destino()
+    {
+        factory(Destino::class)->create();
+
+        $this->actingAsAdmin();
+
+        $response = $this->get('/admin/destinos/adicionar/');
+        $response->assertOk();
+
+        $response = $this->get('/admin/destinos/editar/1');
+        $response->assertOk();
+    }
+
+    /** @test */
+    public function delete_destino_with_attached_user()
+    {
+        factory(Destino::class)->create();
+        factory(Compahia::class)->create();
+        factory(Flight::class)->create();
+        factory(User::class)->create();
+
+        $this->actingAsAdmin();
+
+        $response = $this->get('/usuario/reservar/1');
+        $response->assertRedirect('/usuario/voos');
+
+        $this->get('/');
+
+        $response = $this->get('/admin/destinos/deletar/1');
+        $response->assertRedirect('/admin/destinos/listar');
+    }
     
     public function actingAsAdmin()
     {
