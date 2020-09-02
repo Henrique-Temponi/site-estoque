@@ -200,6 +200,20 @@ class UserTest extends TestCase
     }
 
     /** @test */
+    public function login_with_invalid_data()
+    {
+        $user = factory(User::class)->create();
+
+        $response = $this->post('/login', [
+            'email' => 'wrong',
+            'password' => 'password',
+        ]);
+
+        $response->assertSessionHas('msg');
+        $response->assertRedirect('/login');
+    }
+
+    /** @test */
     public function logout_with_active_user()
     {
         $this->actingAsUser();
