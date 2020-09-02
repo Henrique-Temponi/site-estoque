@@ -293,38 +293,38 @@ class AdminTest extends TestCase
         $response->assertRedirect('/admin/destinos/listar');
     }
 
-        /** @test */
-        public function test_routes_with_compahia()
-        {
-            factory(Compahia::class)->create();
-    
-            $this->actingAsAdmin();
-    
-            $response = $this->get('/admin/compahias/adicionar/');
-            $response->assertOk();
-    
-            $response = $this->get('/admin/compahias/editar/30');
-            $response->assertRedirect('/admin/compahias/adicionar/');
-        }
-    
-        /** @test */
-        public function delete_compahia_with_attached_user()
-        {
-            factory(Destino::class)->create();
-            factory(Compahia::class)->create();
-            factory(Flight::class)->create();
-            factory(User::class)->create();
-    
-            $this->actingAsAdmin();
-    
-            $response = $this->get('/usuario/reservar/1');
-            $response->assertRedirect('/usuario/voos');
-    
-            $this->get('/');
-    
-            $response = $this->get('/admin/compahias/deletar/1');
-            $response->assertRedirect('/admin/compahias/listar');
-        }
+    /** @test */
+    public function test_routes_with_compahia()
+    {
+        factory(Compahia::class)->create();
+
+        $this->actingAsAdmin();
+
+        $response = $this->get('/admin/compahias/adicionar/');
+        $response->assertOk();
+
+        $response = $this->get('/admin/compahias/editar/30');
+        $response->assertRedirect('/admin/compahias/adicionar/');
+    }
+
+    /** @test */
+    public function delete_compahia_with_attached_user()
+    {
+        factory(Destino::class)->create();
+        factory(Compahia::class)->create();
+        factory(Flight::class)->create();
+        factory(User::class)->create();
+
+        $this->actingAsAdmin();
+
+        $response = $this->get('/usuario/reservar/1');
+        $response->assertRedirect('/usuario/voos');
+
+        $this->get('/');
+
+        $response = $this->get('/admin/compahias/deletar/1');
+        $response->assertRedirect('/admin/compahias/listar');
+    }
     
     public function actingAsAdmin()
     {
