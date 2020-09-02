@@ -313,7 +313,6 @@ class AdminTest extends TestCase
         factory(Destino::class)->create();
         factory(Compahia::class)->create();
         factory(Flight::class)->create();
-        factory(User::class)->create();
 
         $this->actingAsAdmin();
 
@@ -324,6 +323,59 @@ class AdminTest extends TestCase
 
         $response = $this->get('/admin/compahias/deletar/1');
         $response->assertRedirect('/admin/compahias/listar');
+    }
+
+    /** @test */
+    public function flight_editar_view_test()
+    {
+        factory(Destino::class)->create();
+        factory(Compahia::class)->create();
+        factory(Flight::class)->create();
+
+        $this->actingAsAdmin();
+
+        $response = $this->get('/admin/voos/editar/1');
+        $response->assertOk();
+
+        $response = $this->get('/admin/voos/editar/2');
+        $response->assertRedirect('/admin/voos/listar');
+
+
+    }
+
+    /** @test */
+    public function flight_salvar_test()
+    {
+        factory(Destino::class)->create();
+        factory(Compahia::class)->create();
+        factory(Flight::class)->create();
+
+        $this->actingAsAdmin();
+
+        $response = $this->post('/admin/voos/editar/1', array_merge($this->newFlightData(), ['voo' => 'Nice']));
+        $response->assertSessionHasNoErrors();
+        $response->assertRedirect('/admin/voos/listar');
+
+    }
+
+    /** @test */
+    public function flight_delete_test()
+    {
+        factory(Destino::class)->create();
+        factory(Compahia::class)->create();
+        factory(Flight::class)->create();
+
+        $this->actingAsAdmin();
+
+        $response = $this->get('/admin/voos/deletar/1');
+        $response->assertSessionHas('msg');
+        $response->assertRedirect('/admin/voos/listar');
+
+        $destino = Destino::all();
+        $compahia = Compahia::all();
+
+        $this->assertNotNull($destino);
+        $this->assertNotNull($compahia);
     }
     
     public function actingAsAdmin()

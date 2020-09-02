@@ -142,6 +142,9 @@ class AdminController extends Controller
     {
         $this->authorize('admin-painel', Auth::user());
         $voo = Flight::find($id);
+
+        if($voo == null) return redirect()->route('admin.voos.listar');
+
         $destino = Destino::all();
         $compahia = Compahia::all();
 
