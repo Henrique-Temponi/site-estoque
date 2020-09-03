@@ -3,6 +3,9 @@
 /public/storage
 /storage/*.key
 /vendor
+/TestsCoverage
+/public/adminlte
+/resources/views/layout
 .env
 .env.backup
 .phpunit.result.cache
