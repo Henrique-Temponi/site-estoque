@@ -1,4 +1,4 @@
-<html>
+<html style="height: auto;" lang="en">
     <head>
         <title>Sistema admin</title>
         <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">

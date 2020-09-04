@@ -1,18 +1,25 @@
-@extends('admin')
+@extends('layout.admin')
 
 @section('conteudo')
 
-<div class="row">
-
-    <h3>Voos disponiveis</h3>
-    <a class="btn" href="{{ route('admin.voos.adicionar') }}">Adicionar voo</a>
-
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Starter Page</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Painel Admin</a></li>
+                    <li class="breadcrumb-item active">Voos</li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-<div class="divider"></div>
-
-<div class="row">
+<!-- <div class="row">
     <table>
         <thead>
             <th>Nome do voo</th>
@@ -32,7 +39,7 @@
                 <td>{{ $voo->user()->count()}}</td>
                 <td>{{ $voo->turno }}</td>
                 <td><a class="btn green" href="{{ route('admin.voos.editar', $voo->id) }}">Editar</a></td>
-                <td><a class="btn red" href="{{ route('admin.voos.deletar', $voo->id) }}">Deletar</a></td>
+                <td><a class="btn red" href="{{ route('admin.voos.deletar', $voo->id) }}">Deletar</a></td> -->
                 <!-- @if($voo->user()->count())
                     <td><a class="btn green disabled" href="#">Editar</a></td>
                     <td><a class="btn red disabled" href="#">Deletar</a></td>
@@ -40,10 +47,10 @@
                     <!-- <td><a class="btn green" href="{{ route('admin.voos.editar', $voo->id) }}">Editar</a></td>
                     <td><a class="btn red" href="{{ route('admin.voos.deletar', $voo->id) }}">Deletar</a></td> -->
                 <!-- @endif -->
-            </tr>
+            <!-- </tr>
             @endforeach
         </tbody>
     </table>
-</div>
+</div> -->
 
 @endsection
