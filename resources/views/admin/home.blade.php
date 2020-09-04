@@ -3,11 +3,20 @@
 @section('conteudo')
 
 <div class="content-header">
-
-
+  <div class="container-fluid">
+    <h1>Bem Vindo, {{ Auth::user()->name }}</h1>
+  </div>
 </div>
 
+<canvas id="myChart"></canvas>
+
+
 <div class="content">
+  <div class="container-fluid">
+  </div>
+</div>
+
+<!-- <div class="content">
 
   <div class="col-lg-6">
       <div class="card card-primary card-outline">
@@ -60,6 +69,6 @@
       </div>
   </div>
 
-</div>
+</div> -->
 
 @endsection
