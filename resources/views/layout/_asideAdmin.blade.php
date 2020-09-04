@@ -52,13 +52,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.destinos.listar') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.destinos.adicionar') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Adicionar</p>
                 </a>
@@ -75,13 +75,13 @@
             </a>
             <ul class="nav-item nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.compahias.listar') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   Listar
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.compahias.adicionar') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   Adicionar
                 </a>
@@ -89,7 +89,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.usuarios.listar') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
               <p>Usuario</p>
             </a>
