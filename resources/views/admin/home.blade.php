@@ -8,11 +8,14 @@
   </div>
 </div>
 
-<canvas id="myChart"></canvas>
+
 
 
 <div class="content">
   <div class="container-fluid">
+    <div class="col-lg-6">
+      <canvas id="myChart"></canvas>
+    </div>
   </div>
 </div>
 
