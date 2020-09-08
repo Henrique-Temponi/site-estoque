@@ -37,7 +37,7 @@
             
             <div class="row">
               <div class="col-sm-12">
-                <table class="table table-bordered table-striped-dataTable">
+                <table class="table table-bordered table-striped dataTable">
                   <thead>
                     <th>Nome do voo</th>
                     <th>Destino</th>
@@ -48,7 +48,7 @@
                   </thead>
                   <tbody>
                     @foreach($voos as $voo)
-                      <tr>
+                      <tr class="even">
                         <td>{{ $voo->voo }}</td>
                         <td>{{ $voo->destino->nome }}</td>
                         <td>{{ $voo->compahia->nome }}</td>
