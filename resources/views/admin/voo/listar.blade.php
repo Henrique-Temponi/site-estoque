@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Starter Page</h1>
+        <h1 class="m-0 text-dark">Voos</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -30,8 +30,13 @@
             <div class="row">
               <div class="col-sm-12 col-md-6">
                 <div class="dataTables_filter">
-                  <label>Pesquisar: <input type="search" class="form-control form-control-sm"></label>
+                  <form action="">
+                    <label>Pesquisar: <input type="search" name="s" class="form-control form-control-sm"></label>
+                  </form>
                 </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <button class="btn btn-primary btn-center">Adicionar voo</button>
               </div>
             </div>
             

@@ -14,6 +14,8 @@
         @include('layout._navAdmin')        
         @include('layout._asideAdmin')
 
+        <!-- TODO: adicionar msg erro -->
+
         <div class="content-wrapper" style="min-height: 120.5px;">    
             @yield('conteudo')
         </div>
