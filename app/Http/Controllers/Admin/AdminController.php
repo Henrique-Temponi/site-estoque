@@ -70,7 +70,7 @@ class AdminController extends Controller
             $compahia_quantidades = Compahia::all()->count();
 
             $dados = [
-                'voos' => $voos_quantidades,
+                'voo' => $voos_quantidades,
                 'user' => $user_quantidades,
                 'destino' => $destino_quantidades,
                 'compahia' => $compahia_quantidades,
