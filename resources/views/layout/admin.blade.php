@@ -25,6 +25,7 @@
 
     <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
+    <script type="text/javascript">var jarray =<?php echo json_encode($dados); ?>;</script>
     <script src="{{ asset('js/myChart.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
