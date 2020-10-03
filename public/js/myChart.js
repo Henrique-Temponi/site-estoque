@@ -38,3 +38,14 @@ var chart = new Chart(ctx, {
         // }
     }
 });
+
+var data = document.getElementById("userline").getContext('2d');
+var usertab = new Chart(data, {
+    //type of chart
+    type: 'line',
+
+    //data for output
+    data: {
+
+    }
+});
