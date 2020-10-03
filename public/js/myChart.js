@@ -62,6 +62,8 @@ var usertab = new Chart(data, {
                 jusuarios['Nov'],
                 jusuarios['Dec'],
             ],
+            backgroundColor: 'rgba(13, 97, 236, 1)',
+            // yAxisID: 10,
         }],
 
         labels: [
@@ -83,6 +85,14 @@ var usertab = new Chart(data, {
     options: {
         legend: {
             display: false,
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    BeginAtzero: true,
+                    suggestedMax: 10,
+                }
+            }]
         }
     }
 });
