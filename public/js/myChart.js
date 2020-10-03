@@ -4,6 +4,7 @@
 // console.log(test);
 
 console.log(jarray);
+console.log(jusuarios);
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
@@ -46,6 +47,42 @@ var usertab = new Chart(data, {
 
     //data for output
     data: {
+        datasets: [{
+            data: [
+                jusuarios['Jan'],
+                jusuarios['Feb'],
+                jusuarios['Mar'],
+                jusuarios['Abr'],
+                jusuarios['May'],
+                jusuarios['Jun'],
+                jusuarios['Jul'],
+                jusuarios['Aug'],
+                jusuarios['Set'],
+                jusuarios['Oct'],
+                jusuarios['Nov'],
+                jusuarios['Dec'],
+            ],
+        }],
 
+        labels: [
+            'Janeiro',
+            'Fevereiro',
+            'Marco',
+            'Abril',
+            'Maio',
+            'Junho',
+            'Julho',
+            'Agosto',
+            'Setembro',
+            'Outubro',
+            'Novembro',
+            'Dezembro',
+        ]
+    },
+
+    options: {
+        legend: {
+            display: false,
+        }
     }
 });

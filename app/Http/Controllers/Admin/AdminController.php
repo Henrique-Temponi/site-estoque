@@ -10,6 +10,7 @@ use App\Http\Requests\Voo as RequestVoo;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
@@ -75,8 +76,14 @@ class AdminController extends Controller
                 'destino' => $destino_quantidades,
                 'compahia' => $compahia_quantidades,
             ];
+
+            $novosUsuarios = DB::table('user_amount_month')->select('*')->first();
+
+            // dd($novosUsuarios);
     
-            return view('admin.home')->with('dados', $dados);
+            return view('admin.home')
+                ->with('dados', $dados)
+                ->with('novosUsuarios', $novosUsuarios);
         // }  
         // else {
 
