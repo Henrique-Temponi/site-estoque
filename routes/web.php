@@ -48,6 +48,10 @@ Route::post('/admin/login', [
     'uses' => 'Admin\AdminController@verificar'
 ]);
 
+Route::get('/test', [
+    'uses' => 'Admin\TestController@test'
+]);
+
 Route::group(['middleware' => ['auth']], 
     function() {
 
