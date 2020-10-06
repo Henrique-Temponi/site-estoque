@@ -5,6 +5,8 @@
 
 console.log(jarray);
 console.log(jusuarios);
+console.log(jreservasNome);
+console.log(jreservasquantidade);
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
@@ -100,11 +102,23 @@ var usertab = new Chart(data, {
 var ctx = $('#vooschart');
 var vooschart = new Chart(ctx, {
 
+
+    
     //type of chart
     type: 'horizontalBar',
 
     data: {
+        datasets: [{
+            data: [
 
+            ],
+        }],
+
+        labels: [
+            jreservasquantidade.forEach(element => {
+                element
+            })
+        ],
     },
 
     options: {
