@@ -24,7 +24,7 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-header">
-            <h5 class="card-title">Os 10 voos mais reservados</h5>
+            <h5 class="card-title">Destinos mais reservados</h5>
           </div>
           <div class="card-body">
             <canvas id="vooschart"></canvas>

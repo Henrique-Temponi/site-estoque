@@ -109,21 +109,23 @@ var vooschart = new Chart(ctx, {
 
     data: {
         datasets: [{
-            data: [
-
-            ],
+            data: jreservasquantidade,
         }],
 
-        labels: [
-            jreservasquantidade.forEach(element => {
-                element
-            })
-        ],
+        labels: jreservasNome,
     },
 
     options: {
         legend: {
             display: false,
         },
+        scales: {
+            xAxes: [{
+                ticks: {
+                    suggestedMin: 0,
+                    suggestedMax: 10,
+                }
+            }]
+        }
     },
 })
