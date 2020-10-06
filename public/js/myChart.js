@@ -96,3 +96,20 @@ var usertab = new Chart(data, {
         }
     }
 });
+
+var ctx = $('#vooschart');
+var vooschart = new Chart(ctx, {
+
+    //type of chart
+    type: 'horizontalBar',
+
+    data: {
+
+    },
+
+    options: {
+        legend: {
+            display: false,
+        },
+    },
+})
