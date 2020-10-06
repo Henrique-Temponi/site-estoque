@@ -99,7 +99,7 @@ var usertab = new Chart(data, {
     }
 });
 
-var ctx = $('#vooschart');
+var ctx = document.getElementById("vooschart").getContext('2d');
 var vooschart = new Chart(ctx, {
 
 
