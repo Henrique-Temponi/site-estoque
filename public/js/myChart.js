@@ -110,6 +110,7 @@ var vooschart = new Chart(ctx, {
     data: {
         datasets: [{
             data: jreservasquantidade,
+            backgroundColor: 'rgba(0, 255, 0, 0.53)',
         }],
 
         labels: jreservasNome,

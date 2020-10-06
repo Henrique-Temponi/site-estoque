@@ -13,7 +13,7 @@
 
                 <p class="card-text">
                     Destino: {{ $p->destino->nome }} <br>
-                    Abreviação: {{ $p->destino->abreviacao }}
+                    Turno: {{ $turno[$p->turno] }}
                 </p>
                 <a href="{{ route('usuario.reservar', $p->id ) }}" class="card-link">Reservar</a>
                 </div>
