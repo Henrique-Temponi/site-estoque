@@ -86,6 +86,11 @@ Route::group(['middleware' => ['auth']],
             'uses' => 'Admin\AdminController@listar'
         ]);
 
+        Route::get('/admin/voos/listar/pesquisar', [
+            'as' => 'admin.voos.pesquisar',
+            'uses' => 'Admin\AdminController@pesquisar'
+        ]);
+
         Route::get('/admin/voos/adicionar', [
             'as' => 'admin.voos.adicionar',
             'uses' => 'Admin\AdminController@adicionar'

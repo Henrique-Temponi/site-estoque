@@ -115,11 +115,33 @@ class AdminController extends Controller
     public function listar()
     {
         $this->authorize('admin-painel', Auth::user());
+        $destinos = Destino::all();
         $voos = Flight::all();
 
         // dd($voos[0]->user()->count());
 
-        return view('admin.voo.listar')->with('voos', $voos);
+        return view('admin.voo.listar')
+            ->with('destinos', $destinos)
+            ->with('voos', $voos);
+    }
+
+    public function pesquisar(Request $request)
+    {
+        $this->authorize('admin-painel', Auth::user());
+        $destinos = Destino::all();
+        $dado = $request->destino;
+        
+        ($dado != 0) ? $voos = Flight::where('destino_id', $dado)->get() : $voos = Flight::all();
+
+        //TODO: colocar avisa de nada encontrado
+            
+
+        // dd($voos);
+        // dd($voos[0]->user()->count());
+
+        return view('admin.voo.listar')
+            ->with('destinos', $destinos)
+            ->with('voos', $voos);
     }
     
     public function adicionar()

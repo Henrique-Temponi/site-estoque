@@ -27,16 +27,21 @@
         </div>
         <div class="card-body">
           <div class="dataTables_wrapper dt-bootstrap4">
+
             <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="dataTables_filter">
-                  <form action="">
-                    <label>Pesquisar: <input type="search" name="s" class="form-control form-control-sm"></label>
-                  </form>
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <a href="{{ route('admin.voos.adicionar') }}" class="btn btn-primary btn-center">Adicionar voo</a>
+              <div class="col-sm-4">
+                <form action="{{ route('admin.voos.pesquisar') }}">
+                  <div class="form-group">
+                    <label for="pesDestino">Pesquisar por Destino: </label>
+                    <select name="destino" class="custom-select" id="pesDestino">
+                      <option value="0" selected>Todos</option>
+                      @foreach($destinos as $destino)
+                        <option value="{{$destino->id}}">{{$destino->nome}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Pesquisar</button>
+                </form>
               </div>
             </div>
             
