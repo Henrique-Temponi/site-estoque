@@ -36,7 +36,7 @@
                 </div>
               </div>
               <div class="col-sm-12 col-md-6">
-                <button class="btn btn-primary btn-center">Adicionar voo</button>
+                <a href="{{ route('admin.voos.adicionar') }}" class="btn btn-primary btn-center">Adicionar voo</a>
               </div>
             </div>
             
