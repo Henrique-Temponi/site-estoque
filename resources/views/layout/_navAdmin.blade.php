@@ -9,6 +9,8 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ route('admin.index') }}" class="nav-link">Sistema Admin</a>
       </li>
+        <a href="{{ route('site.home') }}" target="blanck" class="nav-link">Ir ao site</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
