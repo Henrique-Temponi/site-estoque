@@ -1,61 +1,56 @@
-@extends('admin')
+@extends('layout.admin')
 
 @section('conteudo')
 
-<div class="row">
-    <div class="col s12 m6">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Voos disponiveis</span>
-          <p>Numero total de voos: {{ $voos_quantidade }}</p>
+<div class="content-header">
+  <div class="container-fluid">
+    <h1>Bem Vindo, {{ Auth::user()->name }}</h1>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Quantidade de entidates</h5>
+          </div>
+          <div class="card-body">
+            <canvas id="myChart"></canvas>
+          </div>
         </div>
-        <div class="card-action">
-          <a href="{{ route('admin.voos.adicionar') }}">Adicionar voo</a>
-          <a href="{{ route('admin.voos.listar') }}">Listar voos</a>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Destinos Populares</h5>
+          </div>
+          <div class="card-body">
+            <canvas id="vooschart"></canvas>
+          </div>
         </div>
       </div>
     </div>
-  <!-- </div> -->
-
-  <!-- <div class="row"> -->
-    <div class="col s12 m6">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Usuarios cadastrados</span>
-          <p>Numero total de usuarios: {{ $user_quantidade}}</p>
-        </div>
-        <div class="card-action">
-          <!-- <a href="">Cadastrar usuario</a> -->
-          <a href="{{ route('admin.usuarios.listar') }}">Listar usuarios</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col s12 m6">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Compahias cadastradas</span>
-          <p>Numero de Compahia cadastradas: {{ $compahia_quantidades }}</p>
-        </div>
-        <div class="card-action">
-          <a href="{{ route('admin.compahias.adicionar') }}">Cadastrar compahia</a>
-          <a href="{{ route('admin.compahias.listar') }}">Listar compahias</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col s12 m6">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Destinos cadastrados</span>
-          <p>Numero de destinos cadastrados: {{ $destino_quantidades }}</p>
-        </div>
-        <div class="card-action">
-          <a href="{{ route('admin.destinos.adicionar') }}">Cadastrar Destino</a>
-          <a href="{{ route('admin.destinos.listar') }}">Listar destinos</a>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Novos usuarios cadastrados</h5>
+          </div>
+          <div class="card-body">
+            <canvas id="userline" height="50px"></canvas>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
+<script type="text/javascript">var jarray =<?php echo json_encode($dados); ?>;</script>
+<script type="text/javascript">var jusuarios =<?php echo json_encode($novosUsuarios); ?>;</script>
+<script type="text/javascript">var jreservasNome =<?php echo json_encode($quantidadeReservasNome); ?>;</script>
+<script type="text/javascript">var jreservasquantidade =<?php echo json_encode($quantidadeReservas); ?>;</script>
+<script src="{{ asset('js/myChart.js') }}"></script>
 @endsection

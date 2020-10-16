@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('admin-painel', function($user){
-            return $user->admin
+            return $user->admin == 1
                 ? Response::allow()
                 : Response::deny('Usuario não tem autenticação para assesar a rota', 403);
         });
