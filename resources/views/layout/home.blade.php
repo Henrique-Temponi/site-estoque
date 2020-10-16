@@ -11,6 +11,9 @@
 
     <div class="wrapper">
         @include('layout._nav')        
+
+        <!-- TODO: adicionar msg erro -->
+
         
         <div class="container">
             

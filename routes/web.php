@@ -48,6 +48,10 @@ Route::post('/admin/login', [
     'uses' => 'Admin\AdminController@verificar'
 ]);
 
+Route::get('/test', [
+    'uses' => 'Admin\TestController@test'
+]);
+
 Route::group(['middleware' => ['auth']], 
     function() {
 
@@ -80,6 +84,11 @@ Route::group(['middleware' => ['auth']],
         Route::get('/admin/voos/listar', [
             'as' => 'admin.voos.listar',
             'uses' => 'Admin\AdminController@listar'
+        ]);
+
+        Route::get('/admin/voos/listar/pesquisar', [
+            'as' => 'admin.voos.pesquisar',
+            'uses' => 'Admin\AdminController@pesquisar'
         ]);
 
         Route::get('/admin/voos/adicionar', [

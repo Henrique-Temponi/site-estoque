@@ -5,8 +5,10 @@ namespace App\Http\Controllers\site;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User as RequestsUser;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -67,13 +69,16 @@ class LoginController extends Controller
         $usuario = new User($request->except('password'));
         $usuario->password = bcrypt($request->password);
         $usuario->admin = FALSE;
-        $usuario->save();
+        // $usuario->save();
 
         $request->session()->flash('msg', [
             'mensagem' =>  'Usuario criado com sucesso',
             'class' => 'green white-text'
         ]);
         
+        $time = Carbon::now();
+        DB::table('user_amount_month')->increment($time->shortEnglishMonth);
+
         return redirect()->route('site.login');
     }
 }

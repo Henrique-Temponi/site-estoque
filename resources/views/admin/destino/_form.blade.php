@@ -1,12 +1,12 @@
-<div class="input-field">
-    <input type="text" name="nome" id="nome" value="{{
+<div class="form-group">
+    <label for="nome">Nome:</label>
+    <input type="text" class="form-control" name="nome" id="nome" value="{{
         isset($registro->nome) ? $registro->nome : ''
     }}">
-    <label for="nome">Nome:</label>
 </div>
-<div class="input-field">
-    <input type="text" name="abreviacao" id="abreviacao" value="{{
+<div class="form-group">
+    <label for="abreviacao">Abreviação:</label>
+    <input type="text" class="form-control" name="abreviacao" id="abreviacao" value="{{
         isset($registro->abreviacao) ? $registro->abreviacao : ''
     }}">
-    <label for="abreviacao">Abreviação:</label>
 </div>

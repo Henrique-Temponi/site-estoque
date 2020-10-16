@@ -10,6 +10,7 @@ use App\Http\Requests\Voo as RequestVoo;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
@@ -64,16 +65,41 @@ class AdminController extends Controller
 
         // if ($response->allowed()) {
 
+            $todoOsDestinos = Destino::all();
             $voos_quantidades = Flight::all()->count();
             $user_quantidades = User::all()->count();
-            $destino_quantidades = Destino::all()->count();
+            $destino_quantidades = $todoOsDestinos->count();
             $compahia_quantidades = Compahia::all()->count();
+
+            $dados = [
+                'voo' => $voos_quantidades,
+                'user' => $user_quantidades,
+                'destino' => $destino_quantidades,
+                'compahia' => $compahia_quantidades,
+            ];
+
+            //TODO: tentar fazer apenas uma arranjo de json, ao inves de mandar tudo separado
+            // depois tentar fazer por conjunto associativo
+            // foreach ($todoOsDestinos as $destino) {
+            //     $quantidadeReservas[$destino->nome] = $destino->flight->count();
+            // }
+
+            foreach ($todoOsDestinos as $destino) {
+                $quantidadeReservasNome[] = $destino->nome;
+                $quantidadeReservas[] = $destino->flight->count();
+            }
+
+            // dd($quantidadeReservas);
+
+            $novosUsuarios = DB::table('user_amount_month')->select('*')->first();
+
+            // dd($novosUsuarios);
     
             return view('admin.home')
-                ->with('voos_quantidade', $voos_quantidades)
-                ->with('user_quantidade', $user_quantidades)
-                ->with('destino_quantidades', $destino_quantidades)
-                ->with('compahia_quantidades', $compahia_quantidades);
+                ->with('dados', $dados)
+                ->with('novosUsuarios', $novosUsuarios)
+                ->with('quantidadeReservasNome', $quantidadeReservasNome)
+                ->with('quantidadeReservas', $quantidadeReservas);
         // }  
         // else {
 
@@ -89,11 +115,33 @@ class AdminController extends Controller
     public function listar()
     {
         $this->authorize('admin-painel', Auth::user());
+        $destinos = Destino::all();
         $voos = Flight::all();
 
         // dd($voos[0]->user()->count());
 
-        return view('admin.voo.listar')->with('voos', $voos);
+        return view('admin.voo.listar')
+            ->with('destinos', $destinos)
+            ->with('voos', $voos);
+    }
+
+    public function pesquisar(Request $request)
+    {
+        $this->authorize('admin-painel', Auth::user());
+        $destinos = Destino::all();
+        $dado = $request->destino;
+        
+        ($dado != 0) ? $voos = Flight::where('destino_id', $dado)->get() : $voos = Flight::all();
+
+        //TODO: colocar avisa de nada encontrado
+            
+
+        // dd($voos);
+        // dd($voos[0]->user()->count());
+
+        return view('admin.voo.listar')
+            ->with('destinos', $destinos)
+            ->with('voos', $voos);
     }
     
     public function adicionar()
